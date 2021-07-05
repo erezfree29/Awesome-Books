@@ -1,5 +1,4 @@
 let books = [];
-let c;
 
 const addBookButton = document.querySelector('button');
 addBookButton.onclick = function addBookButton() {
@@ -23,7 +22,12 @@ function showBooks() {
   for (let i = 0; i < books.length; i += 1) {
     
   }
-  alert(books);
+const booksDisplay = document.createElement('div');
+booksDisplay.classList.add('booksDisplay');
+
+const container = document.querySelector('.container');
+
+container.appendChild(booksDisplay);
 }
 
 showBooks();
