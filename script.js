@@ -2,12 +2,15 @@ let books = [];
 
 const addBookButton = document.querySelector('button');
 addBookButton.onclick = function addBookButton() {
-  const btitle = document.querySelector('.title').value;
-  const bauthor = document.querySelector('.author').value;
-  const book = {
-    title: btitle,
-    author: bauthor,
-  };
+  if (document.querySelector('.title').value != '' && document.querySelector('.author').value != ''){
+  // const btitle = document.querySelector('.title').value;
+  // const bauthor = document.querySelector('.author').value;
+  // const book = {
+  //   title: btitle,
+  //   author: bauthor, 
+  //};
+  alert(document.querySelector('.title').value);
+}
   if (localStorage.getItem('savedArray') != null) {
     books = JSON.parse(localStorage.getItem('savedArray'));
   }
