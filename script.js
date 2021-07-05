@@ -1,4 +1,6 @@
 let books = [];
+let c;
+
 const addBookButton = document.querySelector('button');
 addBookButton.addEventListener('click', () => {
   const btitle = document.querySelector('.title').value;
