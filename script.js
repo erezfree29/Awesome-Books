@@ -19,15 +19,19 @@ function showBooks() {
   if (localStorage.getItem('savedArray') != null) {
     books = JSON.parse(localStorage.getItem('savedArray'));
   }
+  const contain = document.querySelector('.books');
   for (let i = 0; i < books.length; i += 1) {
-    
+
+const btitle = document.createElement('h5');
+btitle.className = 'bookname';
+btitle.textContent = books[i].title;
+const bauthor = document.createElement('p');
+bauthor.className = 'bookauthor';
+bauthor.textContent = books[i].author;
+
+contain.appendChild(btitle);
+contain.appendChild(bauthor);
   }
-const booksDisplay = document.createElement('div');
-booksDisplay.classList.add('booksDisplay');
-
-const container = document.querySelector('.container');
-
-container.appendChild(booksDisplay);
 }
 
 showBooks();
