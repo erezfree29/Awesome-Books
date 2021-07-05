@@ -2,7 +2,7 @@ let books = [];
 let c;
 
 const addBookButton = document.querySelector('button');
-addBookButton.addEventListener('click', () => {
+addBookButton.onclick = function addBookButton() {
   const btitle = document.querySelector('.title').value;
   const bauthor = document.querySelector('.author').value;
   const book = {
@@ -14,5 +14,16 @@ addBookButton.addEventListener('click', () => {
   }
   books.push(book);
   localStorage.setItem('savedArray', JSON.stringify(books));
-  alert(books[1].title);
-})();
+};
+
+function showBooks() {
+  if (localStorage.getItem('savedArray') != null) {
+    books = JSON.parse(localStorage.getItem('savedArray'));
+  }
+  for (let i = 0; i < books.length; i += 1) {
+    
+  }
+  alert(books);
+}
+
+showBooks();
