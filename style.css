@@ -1,3 +1,11 @@
+.display {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 28px;
+  color: #311fde;
+  align-items: center;
+  padding: 12px;
+}
+
 .bookauthor {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
