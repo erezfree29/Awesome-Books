@@ -21,37 +21,35 @@ class Library {
       localStorage.setItem('savedArray', JSON.stringify(library.books));
     };
   }
+  showBooks() {
+    if (localStorage.getItem('savedArray') != null) {
+      library.books = JSON.parse(localStorage.getItem('savedArray'));
+    }
+    const contain = document.querySelector('.books');
+    for (let i = 0; i < library.books.length; i += 1) {
+      const btitle = document.createElement('h5');
+      btitle.className = 'bookname';
+      btitle.id = library.books[i].title;
+      btitle.textContent = library.books[i].title;
+      const bauthor = document.createElement('p');
+      bauthor.className = 'bookauthor';
+      bauthor.textContent = library.books[i].author;
+      btitle.appendChild(bauthor);
+      const removeButton = document.createElement('button');
+      removeButton.setAttribute('onclick', `removeFunction('${library.books[i].title}')`);
+      removeButton.id = `remove${library.books[i].title}`;
+      removeButton.textContent = 'remove';
+      contain.appendChild(btitle);
+      contain.appendChild(removeButton);
+    }
+  }
 }
 
 let library = new Library([]);
 
 library.addBook();
 
-
-function showBooks() {
-  if (localStorage.getItem('savedArray') != null) {
-    library.books = JSON.parse(localStorage.getItem('savedArray'));
-  }
-  const contain = document.querySelector('.books');
-  for (let i = 0; i < library.books.length; i += 1) {
-    const btitle = document.createElement('h5');
-    btitle.className = 'bookname';
-    btitle.id = library.books[i].title;
-    btitle.textContent = library.books[i].title;
-    const bauthor = document.createElement('p');
-    bauthor.className = 'bookauthor';
-    bauthor.textContent = library.books[i].author;
-    btitle.appendChild(bauthor);
-    const removeButton = document.createElement('button');
-    removeButton.setAttribute('onclick', `removeFunction('${library.books[i].title}')`);
-    removeButton.id = `remove${library.books[i].title}`;
-    removeButton.textContent = 'remove';
-    contain.appendChild(btitle);
-    contain.appendChild(removeButton);
-  }
-}
-
-showBooks();
+library.showBooks();
 
 // eslint-disable-next-line no-unused-vars
 function removeFunction(title) {
