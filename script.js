@@ -6,7 +6,13 @@ class Library {
 }
 
 let library = new Library([]);
-
+class Book {
+  constructor(title, author) {
+this.title = title;
+this.author = author;
+  }
+  
+};
 
 const addBookButton = document.querySelector('button');
 addBookButton.onclick = function addBookButton() {
@@ -25,6 +31,10 @@ addBookButton.onclick = function addBookButton() {
 
   localStorage.setItem('savedArray', JSON.stringify(library.books));
 };
+
+class UI {
+
+}
 
 function showBooks() {
   if (localStorage.getItem('savedArray') != null) {
