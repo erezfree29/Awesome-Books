@@ -17,3 +17,11 @@
   padding: 9px;
   box-shadow: 0 8px 9px -6px black;
 }
+
+.remove {
+  color: #eee000;
+}
+
+.hr {
+  color: purple;
+}
