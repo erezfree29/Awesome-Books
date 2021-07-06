@@ -1,3 +1,5 @@
 .bookauthor {
-  border-bottom: 1px solid;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  color: blue;
 }
