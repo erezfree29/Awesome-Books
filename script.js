@@ -1,7 +1,10 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable class-methods-use-this */
 class Library {
   constructor(books) {
     this.books = books;
   }
+
   addBook() {
     const addBookButton = document.querySelector('button');
     addBookButton.onclick = function addBookButton() {
@@ -21,6 +24,7 @@ class Library {
       localStorage.setItem('savedArray', JSON.stringify(library.books));
     };
   }
+
   showBooks() {
     if (localStorage.getItem('savedArray') != null) {
       library.books = JSON.parse(localStorage.getItem('savedArray'));
@@ -43,6 +47,7 @@ class Library {
       contain.appendChild(removeButton);
     }
   }
+
   // eslint-disable-next-line no-unused-vars
   removeFunction(title) {
     for (let i = 0; i < library.books.length; i += 1) {
@@ -59,7 +64,5 @@ class Library {
 }
 
 let library = new Library([]);
-
 library.addBook();
-
 library.showBooks();
