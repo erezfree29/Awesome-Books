@@ -1,40 +1,32 @@
-
 class Library {
   constructor(books) {
     this.books = books;
   }
+  addBook() {
+    const addBookButton = document.querySelector('button');
+    addBookButton.onclick = function addBookButton() {
+      if (localStorage.getItem('savedArray') != null) {
+        library.books = JSON.parse(localStorage.getItem('savedArray'));
+      }
+      if (document.querySelector('.title').value !== '' && document.querySelector('.author').value !== '') {
+        const btitle = document.querySelector('.title').value;
+        const bauthor = document.querySelector('.author').value;
+        const book = {
+          title: btitle,
+          author: bauthor,
+        };
+        library.books.push(book);
+      }
+
+      localStorage.setItem('savedArray', JSON.stringify(library.books));
+    };
+  }
 }
 
 let library = new Library([]);
-class Book {
-  constructor(title, author) {
-this.title = title;
-this.author = author;
-  }
-  
-};
 
-const addBookButton = document.querySelector('button');
-addBookButton.onclick = function addBookButton() {
-  if (localStorage.getItem('savedArray') != null) {
-    library.books = JSON.parse(localStorage.getItem('savedArray'));
-  }
-  if (document.querySelector('.title').value !== '' && document.querySelector('.author').value !== '') {
-    const btitle = document.querySelector('.title').value;
-    const bauthor = document.querySelector('.author').value;
-    const book = {
-      title: btitle,
-      author: bauthor,
-    };
-    library.books.push(book);
-  }
+library.addBook();
 
-  localStorage.setItem('savedArray', JSON.stringify(library.books));
-};
-
-class UI {
-
-}
 
 function showBooks() {
   if (localStorage.getItem('savedArray') != null) {
