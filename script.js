@@ -36,11 +36,24 @@ class Library {
       bauthor.textContent = library.books[i].author;
       btitle.appendChild(bauthor);
       const removeButton = document.createElement('button');
-      removeButton.setAttribute('onclick', `removeFunction('${library.books[i].title}')`);
+      removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
       removeButton.id = `remove${library.books[i].title}`;
       removeButton.textContent = 'remove';
       contain.appendChild(btitle);
       contain.appendChild(removeButton);
+    }
+  }
+  // eslint-disable-next-line no-unused-vars
+  removeFunction(title) {
+    for (let i = 0; i < library.books.length; i += 1) {
+      if (library.books[i].title === title) {
+        library.books.splice(i, 1);
+        localStorage.setItem('savedArray', JSON.stringify(library.books));
+        const deleteBook = document.querySelector(`#${CSS.escape(title)}`);
+        const deleteBookButton = document.querySelector(`#remove${CSS.escape(title)}`);
+        deleteBook.parentNode.removeChild(deleteBook);
+        deleteBookButton.parentNode.removeChild(deleteBookButton);
+      }
     }
   }
 }
@@ -50,17 +63,3 @@ let library = new Library([]);
 library.addBook();
 
 library.showBooks();
-
-// eslint-disable-next-line no-unused-vars
-function removeFunction(title) {
-  for (let i = 0; i < library.books.length; i += 1) {
-    if (library.books[i].title === title) {
-      library.books.splice(i, 1);
-      localStorage.setItem('savedArray', JSON.stringify(library.books));
-      const deleteBook = document.querySelector(`#${CSS.escape(title)}`);
-      const deleteBookButton = document.querySelector(`#remove${CSS.escape(title)}`);
-      deleteBook.parentNode.removeChild(deleteBook);
-      deleteBookButton.parentNode.removeChild(deleteBookButton);
-    }
-  }
-}
