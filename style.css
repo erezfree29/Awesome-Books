@@ -6,10 +6,14 @@
 .topnav a {
   float: left;
   color: #f2f2f2;
-  text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+}
+
+.topnav,
+.display {
+  align-items: center;
 }
 
 .topnav a:hover {
@@ -30,7 +34,10 @@
   padding: 12px;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.contain {
+  width: auto;
 }
 
 .bookauthor {
@@ -46,10 +53,11 @@
 
 .books {
   border: 1px solid #28ff;
+  width: 100%;
   border-radius: 3px;
   align-items: center;
-  margin: 3px;
-  padding: 9px;
+  margin: 1px;
+  padding: 1px;
   box-shadow: 0 8px 9px -6px black;
 }
 

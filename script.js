@@ -41,6 +41,7 @@ class Library {
     const contain = document.querySelector('.books');
     for (let i = 0; i < library.books.length; i += 1) {
       const row = document.createElement('tr');
+      row.className ='table table-primary table-striped';
       const htd = document.createElement('td');
       const dtd = document.createElement('td');
       const btitle = document.createElement('h5');
