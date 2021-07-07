@@ -18,7 +18,9 @@ class Library {
           title: btitle,
           author: bauthor,
         };
-        library.books.push(book);
+        if (library.books.some((e) => e.Title !== 'btitle')) {
+          library.books.push(book);
+        }
       }
 
       localStorage.setItem('savedArray', JSON.stringify(library.books));
