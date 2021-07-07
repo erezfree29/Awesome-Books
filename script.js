@@ -43,8 +43,11 @@ class Library {
       removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
       removeButton.id = `remove${library.books[i].title}`;
       removeButton.textContent = 'remove';
+      const horizontal = document.createElement('hr');
+      horizontal.className = 'hr';
       contain.appendChild(btitle);
       contain.appendChild(removeButton);
+      contain.appendChild(horizontal);
     }
   }
 

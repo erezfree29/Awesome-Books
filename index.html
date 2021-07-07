@@ -12,47 +12,18 @@
 </head>
 
 <body>
-  <header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Programming</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Space Science</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Earth sciences</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-primary">Sign-up</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
+  <h1 class="catch display">All Awesome Books</h1>
   <div class="container">
-    <div class="display">All Awesome Books</div>
+    <h1 class="display"></h1>
     <div class="books">
     </div>
     <br>
-    <h4 class="in-title">Add a new book</h4>
     <form id="book-form">
       <label for="title" class="form-label">Title</label>
       <input type="text" placeholder="title" class="title form-control"><br><br>
       <label for="author" class="form-label">Author</label>
       <input type="text" placeholder="author" class="author form-control"><br><br>
-      <button type="submit" id="submit-book" class="btn btn-success">Add Book</button>
+      <button type="submit" id="submit-book" class="btn btn-primary">Add</button>
     </form>
   </div>
   <script src="script.js"></script>
