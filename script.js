@@ -22,6 +22,7 @@ class Library {
         for (let i = 0; i < library.books.length; i += 1) {
           if (library.books[i].title === btitle) {
             flag = 'up';
+            break;
           }
         }
         if (flag === 'down') {
