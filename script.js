@@ -18,7 +18,15 @@ class Library {
           title: btitle,
           author: bauthor,
         };
-        library.books.push(book);
+        let flag = 'down';
+        for (let i = 0; i < library.books.length; i += 1) {
+          if (library.books[i].title === btitle) {
+            flag = 'up';
+          }
+        }
+        if (flag === 'down') {
+          library.books.push(book);
+        }
       }
 
       localStorage.setItem('savedArray', JSON.stringify(library.books));
@@ -41,10 +49,14 @@ class Library {
       btitle.appendChild(bauthor);
       const removeButton = document.createElement('button');
       removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
+      removeButton.className = 'btn btn-danger';
       removeButton.id = `remove${library.books[i].title}`;
       removeButton.textContent = 'remove';
+      const horizontal = document.createElement('hr');
+      horizontal.className = 'hr';
       contain.appendChild(btitle);
       contain.appendChild(removeButton);
+      contain.appendChild(horizontal);
     }
   }
 
