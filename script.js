@@ -41,7 +41,7 @@ class Library {
       btitle.appendChild(bauthor);
       const removeButton = document.createElement('button');
       removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
-      removeButton.className = 'remove';
+      removeButton.className = 'btn btn-danger';
       removeButton.id = `remove${library.books[i].title}`;
       removeButton.textContent = 'remove';
       const horizontal = document.createElement('hr');
