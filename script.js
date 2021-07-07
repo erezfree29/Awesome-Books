@@ -40,6 +40,9 @@ class Library {
     }
     const contain = document.querySelector('.books');
     for (let i = 0; i < library.books.length; i += 1) {
+      const row = document.createElement('tr');
+      const htd = document.createElement('td');
+      const dtd = document.createElement('td');
       const btitle = document.createElement('h5');
       btitle.className = 'bookname';
       btitle.id = library.books[i].title;
@@ -48,16 +51,16 @@ class Library {
       bauthor.className = 'bookauthor';
       bauthor.textContent = library.books[i].author;
       btitle.appendChild(bauthor);
+      htd.appendChild(btitle);
       const removeButton = document.createElement('button');
       removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
       removeButton.className = 'btn btn-danger';
       removeButton.id = `remove${library.books[i].title}`;
       removeButton.textContent = 'remove';
-      const horizontal = document.createElement('hr');
-      horizontal.className = 'hr';
-      contain.appendChild(btitle);
-      contain.appendChild(removeButton);
-      contain.appendChild(horizontal);
+      dtd.appendChild(removeButton);
+      row.appendChild(htd);
+      row.appendChild(dtd);
+      contain.appendChild(row);
     }
   }
 
