@@ -45,16 +45,11 @@ class Library {
       th.setAttribute('scope', 'row');
       row.appendChild(th);
       const htd = document.createElement('td');
-      const atd = document.createElement('td');
       const dtd = document.createElement('td');
       const btitle = document.createElement('h5');
       btitle.className = 'bookname';
-      btitle.textContent = library.books[i].title;
+      btitle.textContent = `${library.books[i].title} by ${library.books[i].author}`;
       htd.appendChild(btitle);
-      const bauthor = document.createElement('p');
-      bauthor.className = 'bookauthor';
-      bauthor.textContent = library.books[i].author;
-      atd.appendChild(bauthor);
       const removeButton = document.createElement('button');
       removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
       removeButton.className = 'remove btn btn-danger';
@@ -62,7 +57,6 @@ class Library {
       removeButton.textContent = 'remove';
       dtd.appendChild(removeButton);
       row.appendChild(htd);
-      row.appendChild(atd);
       row.appendChild(dtd);
       row.id = library.books[i].title;
       contain.appendChild(row);

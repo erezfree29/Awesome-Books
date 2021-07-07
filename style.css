@@ -26,10 +26,11 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 28px;
   color: #311fde;
-  padding: 12px;
+  padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 70%;
 }
 
 .bookname {
@@ -40,7 +41,7 @@
   background-color: #de1b14;
   color: #fff;
   border-radius: 8px;
-  margin-left: 65%;
+  margin-left: 55%;
 }
 
 .hr {
@@ -50,7 +51,6 @@
 }
 
 .books {
-  width: 70%;
   border: 1px solid #28ff;
   border-radius: 3px;
   box-shadow: 0 8px 9px -6px black;
@@ -68,4 +68,10 @@
 .my-form {
   width: 60%;
   margin: 0 auto;
+}
+
+.table-container {
+  margin: 0 auto;
+  width: 80%;
+  align-items: center;
 }
