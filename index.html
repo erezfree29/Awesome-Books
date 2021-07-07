@@ -14,21 +14,40 @@
 </head>
 
 <body>
-<div>
-<div class="topnav">
-  <a class="active" href="#home">List</a>
-  <a href="#add">Add New</a>
-  <a href="#contact">Contact</a>
-</div>
-</div>
+  <div>
+    <div class="topnav">
+      <a class="active" href="#home">List</a>
+      <a href="#add">Add New</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
   <div class="display">
     <h1>All Awesome Books</h1>
-  </div>  
+  </div>
   <div class="container">
     <h1 class="display"></h1>
+    <div class="bd-example">
+      <table class=" books table table-primary table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Book</th>            
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+          </tr>
+        </tbody>
 
-    <table class="books">
-    </table>
+      </table>
+    </div>
     <br>
     <form id="book-form">
       <label for="title" class="form-label">Title</label>

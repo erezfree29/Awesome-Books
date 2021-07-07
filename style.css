@@ -62,9 +62,10 @@
 }
 
 .remove {
-  background-color: #de1b14;
+  background-color: red;
+  margin-top: 8%;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 1px;
 }
 
 .hr {

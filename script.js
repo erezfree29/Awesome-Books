@@ -41,7 +41,6 @@ class Library {
     const contain = document.querySelector('.books');
     for (let i = 0; i < library.books.length; i += 1) {
       const row = document.createElement('tr');
-      row.className ='table table-primary table-striped';
       const htd = document.createElement('td');
       const dtd = document.createElement('td');
       const btitle = document.createElement('h5');
@@ -55,7 +54,7 @@ class Library {
       htd.appendChild(btitle);
       const removeButton = document.createElement('button');
       removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
-      removeButton.className = 'btn btn-danger';
+      removeButton.className = 'remove btn btn-danger';
       removeButton.id = `remove${library.books[i].title}`;
       removeButton.textContent = 'remove';
       dtd.appendChild(removeButton);
