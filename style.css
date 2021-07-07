@@ -18,7 +18,7 @@
 }
 
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #1476de;
   color: white;
 }
 
@@ -51,7 +51,9 @@
 }
 
 .remove {
-  color: #eee000;
+  background-color: #de1b14;
+  color: #fff;
+  border-radius: 8px;
 }
 
 .hr {
