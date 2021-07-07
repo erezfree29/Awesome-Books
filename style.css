@@ -44,7 +44,9 @@
 }
 
 .hr {
-  color: purple;
+  color: #000;
+  font-weight: 700;
+  margin: auto;
 }
 
 .books {
@@ -55,4 +57,14 @@
 
 .add-book {
   float: right;
+}
+
+/* .line {
+  color: #000;
+  margin: 0 auto;
+} */
+
+.my-form {
+  width: 75%;
+  margin: 0 auto;
 }
