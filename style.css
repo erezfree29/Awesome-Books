@@ -23,11 +23,9 @@
 }
 
 .display {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 28px;
-  color: #311fde;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 12px;
 }
 
 .bookauthor {
