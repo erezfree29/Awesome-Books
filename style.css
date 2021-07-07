@@ -50,6 +50,7 @@
 }
 
 .books {
+  width: 70%;
   border: 1px solid #28ff;
   border-radius: 3px;
   box-shadow: 0 8px 9px -6px black;
@@ -65,6 +66,6 @@
 } */
 
 .my-form {
-  width: 75%;
+  width: 60%;
   margin: 0 auto;
 }
