@@ -104,22 +104,25 @@ class Library {
         deleteRow.parentNode.removeChild(deleteRow);
       }
     }
+  }
 
-    function timeItUp() {
-      const timer = document.getElementById('clock');
-      const datertimer = luxon.DateTime.now();
-      timer.innerText = datertimer.toLocaleString(luxon.DateTime.DATETIME_MED);
-    }
+  timeItUp() {
+    const timer = document.getElementById('clock');
+    const datertimer = luxon.DateTime.now();
+    timer.innerText = datertimer.toFormat('MMMM dd yyyy, hh:mm:ss a');
+  }
+
+  startTimer() {
     setInterval(() => {
-      timeItUp();
+      this.timeItUp();
     }, 1000);
   }
-}
+};
 
 let library = new Library([]);
 library.addBook();
 library.showBooks();
-library.timeItUp();
+library.startTimer();
 
 function displayForm() {
   const form = document.querySelector('.my-form');
