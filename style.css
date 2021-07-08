@@ -98,3 +98,11 @@ footer {
   justify-content: center;
   margin-bottom: 3%;
 }
+
+.date {
+  margin-top: 4.5%;
+  margin-right: 8%;
+  color: red;
+  font-weight: 700;
+  float: right;
+}

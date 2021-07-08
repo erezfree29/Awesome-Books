@@ -8341,7 +8341,14 @@ var luxon = (function (exports) {
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
+const currentTime = document.querySelector('.date');
+
+
+const dateToday = DateTime.now();
+currentTime.textContent = dateToday;
+
   return exports;
 
 }({}));
+
 //# sourceMappingURL=luxon.js.map
