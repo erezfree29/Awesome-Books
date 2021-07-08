@@ -97,8 +97,9 @@ class Library {
     }
 
     function showTime() {
-      const clock = document.getElementById('digitalclock');
+      const clock = document.getElementById('clock');
       const dateclock = luxon.DateTime.now();
+      showTime.appendChild(clock);
       clock.innerText = dateclock.toLocaleString(luxon.DateTime.DATETIME_MED);
     }
     setInterval(() => {
