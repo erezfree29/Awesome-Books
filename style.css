@@ -73,3 +73,9 @@ li a:hover:not(.active) {
   width: 80%;
   align-items: center;
 }
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
