@@ -184,7 +184,7 @@ var luxon = (function (exports) {
   /**
    * @private
    */
-  var LuxonError = /*#__PURE__*/function (_Error) {
+  var LuxonError = /*#__PURE__*/ function (_Error) {
     _inheritsLoose(LuxonError, _Error);
 
     function LuxonError() {
@@ -192,13 +192,13 @@ var luxon = (function (exports) {
     }
 
     return LuxonError;
-  }( /*#__PURE__*/_wrapNativeSuper(Error));
+  }( /*#__PURE__*/ _wrapNativeSuper(Error));
   /**
    * @private
    */
 
 
-  var InvalidDateTimeError = /*#__PURE__*/function (_LuxonError) {
+  var InvalidDateTimeError = /*#__PURE__*/ function (_LuxonError) {
     _inheritsLoose(InvalidDateTimeError, _LuxonError);
 
     function InvalidDateTimeError(reason) {
@@ -211,7 +211,7 @@ var luxon = (function (exports) {
    * @private
    */
 
-  var InvalidIntervalError = /*#__PURE__*/function (_LuxonError2) {
+  var InvalidIntervalError = /*#__PURE__*/ function (_LuxonError2) {
     _inheritsLoose(InvalidIntervalError, _LuxonError2);
 
     function InvalidIntervalError(reason) {
@@ -224,7 +224,7 @@ var luxon = (function (exports) {
    * @private
    */
 
-  var InvalidDurationError = /*#__PURE__*/function (_LuxonError3) {
+  var InvalidDurationError = /*#__PURE__*/ function (_LuxonError3) {
     _inheritsLoose(InvalidDurationError, _LuxonError3);
 
     function InvalidDurationError(reason) {
@@ -237,7 +237,7 @@ var luxon = (function (exports) {
    * @private
    */
 
-  var ConflictingSpecificationError = /*#__PURE__*/function (_LuxonError4) {
+  var ConflictingSpecificationError = /*#__PURE__*/ function (_LuxonError4) {
     _inheritsLoose(ConflictingSpecificationError, _LuxonError4);
 
     function ConflictingSpecificationError() {
@@ -250,7 +250,7 @@ var luxon = (function (exports) {
    * @private
    */
 
-  var InvalidUnitError = /*#__PURE__*/function (_LuxonError5) {
+  var InvalidUnitError = /*#__PURE__*/ function (_LuxonError5) {
     _inheritsLoose(InvalidUnitError, _LuxonError5);
 
     function InvalidUnitError(unit) {
@@ -263,7 +263,7 @@ var luxon = (function (exports) {
    * @private
    */
 
-  var InvalidArgumentError = /*#__PURE__*/function (_LuxonError6) {
+  var InvalidArgumentError = /*#__PURE__*/ function (_LuxonError6) {
     _inheritsLoose(InvalidArgumentError, _LuxonError6);
 
     function InvalidArgumentError() {
@@ -276,7 +276,7 @@ var luxon = (function (exports) {
    * @private
    */
 
-  var ZoneIsAbstractError = /*#__PURE__*/function (_LuxonError7) {
+  var ZoneIsAbstractError = /*#__PURE__*/ function (_LuxonError7) {
     _inheritsLoose(ZoneIsAbstractError, _LuxonError7);
 
     function ZoneIsAbstractError() {
@@ -290,8 +290,8 @@ var luxon = (function (exports) {
    * @private
    */
   var n = "numeric",
-      s = "short",
-      l = "long";
+    s = "short",
+    l = "long";
   var DATE_SHORT = {
     year: n,
     month: n,
@@ -448,15 +448,19 @@ var luxon = (function (exports) {
   function isUndefined(o) {
     return typeof o === "undefined";
   }
+
   function isNumber(o) {
     return typeof o === "number";
   }
+
   function isInteger(o) {
     return typeof o === "number" && o % 1 === 0;
   }
+
   function isString(o) {
     return typeof o === "string";
   }
+
   function isDate(o) {
     return Object.prototype.toString.call(o) === "[object Date]";
   } // CAPABILITIES
@@ -472,6 +476,7 @@ var luxon = (function (exports) {
   function maybeArray(thing) {
     return Array.isArray(thing) ? thing : [thing];
   }
+
   function bestBy(arr, by, compare) {
     if (arr.length === 0) {
       return undefined;
@@ -489,12 +494,14 @@ var luxon = (function (exports) {
       }
     }, null)[1];
   }
+
   function pick(obj, keys) {
     return keys.reduce(function (a, k) {
       a[k] = obj[k];
       return a;
     }, {});
   }
+
   function hasOwnProperty(obj, prop) {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   } // NUMBERS AND STRINGS
@@ -506,6 +513,7 @@ var luxon = (function (exports) {
   function floorMod(x, n) {
     return x - n * Math.floor(x / n);
   }
+
   function padStart(input, n) {
     if (n === void 0) {
       n = 2;
@@ -523,6 +531,7 @@ var luxon = (function (exports) {
 
     return "" + minus + result;
   }
+
   function parseInteger(string) {
     if (isUndefined(string) || string === null || string === "") {
       return undefined;
@@ -530,6 +539,7 @@ var luxon = (function (exports) {
       return parseInt(string, 10);
     }
   }
+
   function parseMillis(fraction) {
     // Return undefined (instead of 0) in these cases, where fraction is not set
     if (isUndefined(fraction) || fraction === null || fraction === "") {
@@ -539,25 +549,28 @@ var luxon = (function (exports) {
       return Math.floor(f);
     }
   }
+
   function roundTo(number, digits, towardZero) {
     if (towardZero === void 0) {
       towardZero = false;
     }
 
     var factor = Math.pow(10, digits),
-        rounder = towardZero ? Math.trunc : Math.round;
+      rounder = towardZero ? Math.trunc : Math.round;
     return rounder(number * factor) / factor;
   } // DATE BASICS
 
   function isLeapYear(year) {
     return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
   }
+
   function daysInYear(year) {
     return isLeapYear(year) ? 366 : 365;
   }
+
   function daysInMonth(year, month) {
     var modMonth = floorMod(month - 1, 12) + 1,
-        modYear = year + (month - modMonth) / 12;
+      modYear = year + (month - modMonth) / 12;
 
     if (modMonth === 2) {
       return isLeapYear(modYear) ? 29 : 28;
@@ -576,12 +589,14 @@ var luxon = (function (exports) {
 
     return +d;
   }
+
   function weeksInWeekYear(weekYear) {
     var p1 = (weekYear + Math.floor(weekYear / 4) - Math.floor(weekYear / 100) + Math.floor(weekYear / 400)) % 7,
-        last = weekYear - 1,
-        p2 = (last + Math.floor(last / 4) - Math.floor(last / 100) + Math.floor(last / 400)) % 7;
+      last = weekYear - 1,
+      p2 = (last + Math.floor(last / 4) - Math.floor(last / 100) + Math.floor(last / 400)) % 7;
     return p1 === 4 || p2 === 3 ? 53 : 52;
   }
+
   function untruncateYear(year) {
     if (year > 99) {
       return year;
@@ -594,14 +609,14 @@ var luxon = (function (exports) {
     }
 
     var date = new Date(ts),
-        intlOpts = {
-      hourCycle: "h23",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit"
-    };
+      intlOpts = {
+        hourCycle: "h23",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      };
 
     if (timeZone) {
       intlOpts.timeZone = timeZone;
@@ -625,7 +640,7 @@ var luxon = (function (exports) {
     }
 
     var offMin = parseInt(offMinuteStr, 10) || 0,
-        offMinSigned = offHour < 0 || Object.is(offHour, -0) ? -offMin : offMin;
+      offMinSigned = offHour < 0 || Object.is(offHour, -0) ? -offMin : offMin;
     return offHour * 60 + offMinSigned;
   } // COERCION
 
@@ -634,6 +649,7 @@ var luxon = (function (exports) {
     if (typeof value === "boolean" || value === "" || Number.isNaN(numericValue)) throw new InvalidArgumentError("Invalid unit value " + value);
     return numericValue;
   }
+
   function normalizeObject(obj, normalizer) {
     var normalized = {};
 
@@ -647,10 +663,11 @@ var luxon = (function (exports) {
 
     return normalized;
   }
+
   function formatOffset(offset, format) {
     var hours = Math.trunc(Math.abs(offset / 60)),
-        minutes = Math.trunc(Math.abs(offset % 60)),
-        sign = offset >= 0 ? "+" : "-";
+      minutes = Math.trunc(Math.abs(offset % 60)),
+      sign = offset >= 0 ? "+" : "-";
 
     switch (format) {
       case "short":
@@ -666,6 +683,7 @@ var luxon = (function (exports) {
         throw new RangeError("Value format " + format + " is out of range for property format");
     }
   }
+
   function timeObject(obj) {
     return pick(obj, ["hour", "minute", "second", "millisecond"]);
   }
@@ -679,6 +697,7 @@ var luxon = (function (exports) {
   var monthsLong = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var monthsShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   var monthsNarrow = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+
   function months(length) {
     switch (length) {
       case "narrow":
@@ -703,6 +722,7 @@ var luxon = (function (exports) {
   var weekdaysLong = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   var weekdaysShort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   var weekdaysNarrow = ["M", "T", "W", "T", "F", "S", "S"];
+
   function weekdays(length) {
     switch (length) {
       case "narrow":
@@ -725,6 +745,7 @@ var luxon = (function (exports) {
   var erasLong = ["Before Christ", "Anno Domini"];
   var erasShort = ["BC", "AD"];
   var erasNarrow = ["B", "A"];
+
   function eras(length) {
     switch (length) {
       case "narrow":
@@ -740,18 +761,23 @@ var luxon = (function (exports) {
         return null;
     }
   }
+
   function meridiemForDateTime(dt) {
     return meridiems[dt.hour < 12 ? 0 : 1];
   }
+
   function weekdayForDateTime(dt, length) {
     return weekdays(length)[dt.weekday - 1];
   }
+
   function monthForDateTime(dt, length) {
     return months(length)[dt.month - 1];
   }
+
   function eraForDateTime(dt, length) {
     return eras(length)[dt.year < 0 ? 0 : 1];
   }
+
   function formatRelativeTime(unit, count, numeric, narrow) {
     if (numeric === void 0) {
       numeric = "always";
@@ -790,10 +816,10 @@ var luxon = (function (exports) {
     }
 
     var isInPast = Object.is(count, -0) || count < 0,
-        fmtValue = Math.abs(count),
-        singular = fmtValue === 1,
-        lilUnits = units[unit],
-        fmtUnit = narrow ? singular ? lilUnits[1] : lilUnits[2] || lilUnits[1] : singular ? units[unit][0] : unit;
+      fmtValue = Math.abs(count),
+      singular = fmtValue === 1,
+      lilUnits = units[unit],
+      fmtUnit = narrow ? singular ? lilUnits[1] : lilUnits[2] || lilUnits[1] : singular ? units[unit][0] : unit;
     return isInPast ? fmtValue + " " + fmtUnit + " ago" : "in " + fmtValue + " " + fmtUnit;
   }
 
@@ -839,7 +865,7 @@ var luxon = (function (exports) {
    * @private
    */
 
-  var Formatter = /*#__PURE__*/function () {
+  var Formatter = /*#__PURE__*/ function () {
     Formatter.create = function create(locale, opts) {
       if (opts === void 0) {
         opts = {};
@@ -850,8 +876,8 @@ var luxon = (function (exports) {
 
     Formatter.parseFormat = function parseFormat(fmt) {
       var current = null,
-          currentFull = "",
-          bracketed = false;
+        currentFull = "",
+        bracketed = false;
       var splits = [];
 
       for (var i = 0; i < fmt.length; i++) {
@@ -966,308 +992,308 @@ var luxon = (function (exports) {
       var _this = this;
 
       var knownEnglish = this.loc.listingMode() === "en",
-          useDateTimeFormatter = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory",
-          string = function string(opts, extract) {
-        return _this.loc.extract(dt, opts, extract);
-      },
-          formatOffset = function formatOffset(opts) {
-        if (dt.isOffsetFixed && dt.offset === 0 && opts.allowZ) {
-          return "Z";
-        }
+        useDateTimeFormatter = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory",
+        string = function string(opts, extract) {
+          return _this.loc.extract(dt, opts, extract);
+        },
+        formatOffset = function formatOffset(opts) {
+          if (dt.isOffsetFixed && dt.offset === 0 && opts.allowZ) {
+            return "Z";
+          }
 
-        return dt.isValid ? dt.zone.formatOffset(dt.ts, opts.format) : "";
-      },
-          meridiem = function meridiem() {
-        return knownEnglish ? meridiemForDateTime(dt) : string({
-          hour: "numeric",
-          hourCycle: "h12"
-        }, "dayperiod");
-      },
-          month = function month(length, standalone) {
-        return knownEnglish ? monthForDateTime(dt, length) : string(standalone ? {
-          month: length
-        } : {
-          month: length,
-          day: "numeric"
-        }, "month");
-      },
-          weekday = function weekday(length, standalone) {
-        return knownEnglish ? weekdayForDateTime(dt, length) : string(standalone ? {
-          weekday: length
-        } : {
-          weekday: length,
-          month: "long",
-          day: "numeric"
-        }, "weekday");
-      },
-          maybeMacro = function maybeMacro(token) {
-        var formatOpts = Formatter.macroTokenToFormatOpts(token);
+          return dt.isValid ? dt.zone.formatOffset(dt.ts, opts.format) : "";
+        },
+        meridiem = function meridiem() {
+          return knownEnglish ? meridiemForDateTime(dt) : string({
+            hour: "numeric",
+            hourCycle: "h12"
+          }, "dayperiod");
+        },
+        month = function month(length, standalone) {
+          return knownEnglish ? monthForDateTime(dt, length) : string(standalone ? {
+            month: length
+          } : {
+            month: length,
+            day: "numeric"
+          }, "month");
+        },
+        weekday = function weekday(length, standalone) {
+          return knownEnglish ? weekdayForDateTime(dt, length) : string(standalone ? {
+            weekday: length
+          } : {
+            weekday: length,
+            month: "long",
+            day: "numeric"
+          }, "weekday");
+        },
+        maybeMacro = function maybeMacro(token) {
+          var formatOpts = Formatter.macroTokenToFormatOpts(token);
 
-        if (formatOpts) {
-          return _this.formatWithSystemDefault(dt, formatOpts);
-        } else {
-          return token;
-        }
-      },
-          era = function era(length) {
-        return knownEnglish ? eraForDateTime(dt, length) : string({
-          era: length
-        }, "era");
-      },
-          tokenToString = function tokenToString(token) {
-        // Where possible: http://cldr.unicode.org/translation/date-time-1/date-time#TOC-Standalone-vs.-Format-Styles
-        switch (token) {
-          // ms
-          case "S":
-            return _this.num(dt.millisecond);
+          if (formatOpts) {
+            return _this.formatWithSystemDefault(dt, formatOpts);
+          } else {
+            return token;
+          }
+        },
+        era = function era(length) {
+          return knownEnglish ? eraForDateTime(dt, length) : string({
+            era: length
+          }, "era");
+        },
+        tokenToString = function tokenToString(token) {
+          // Where possible: http://cldr.unicode.org/translation/date-time-1/date-time#TOC-Standalone-vs.-Format-Styles
+          switch (token) {
+            // ms
+            case "S":
+              return _this.num(dt.millisecond);
 
-          case "u": // falls through
+            case "u": // falls through
 
-          case "SSS":
-            return _this.num(dt.millisecond, 3);
-          // seconds
+            case "SSS":
+              return _this.num(dt.millisecond, 3);
+              // seconds
 
-          case "s":
-            return _this.num(dt.second);
+            case "s":
+              return _this.num(dt.second);
 
-          case "ss":
-            return _this.num(dt.second, 2);
-          // minutes
+            case "ss":
+              return _this.num(dt.second, 2);
+              // minutes
 
-          case "m":
-            return _this.num(dt.minute);
+            case "m":
+              return _this.num(dt.minute);
 
-          case "mm":
-            return _this.num(dt.minute, 2);
-          // hours
+            case "mm":
+              return _this.num(dt.minute, 2);
+              // hours
 
-          case "h":
-            return _this.num(dt.hour % 12 === 0 ? 12 : dt.hour % 12);
+            case "h":
+              return _this.num(dt.hour % 12 === 0 ? 12 : dt.hour % 12);
 
-          case "hh":
-            return _this.num(dt.hour % 12 === 0 ? 12 : dt.hour % 12, 2);
+            case "hh":
+              return _this.num(dt.hour % 12 === 0 ? 12 : dt.hour % 12, 2);
 
-          case "H":
-            return _this.num(dt.hour);
+            case "H":
+              return _this.num(dt.hour);
 
-          case "HH":
-            return _this.num(dt.hour, 2);
-          // offset
+            case "HH":
+              return _this.num(dt.hour, 2);
+              // offset
 
-          case "Z":
-            // like +6
-            return formatOffset({
-              format: "narrow",
-              allowZ: _this.opts.allowZ
-            });
+            case "Z":
+              // like +6
+              return formatOffset({
+                format: "narrow",
+                allowZ: _this.opts.allowZ
+              });
 
-          case "ZZ":
-            // like +06:00
-            return formatOffset({
-              format: "short",
-              allowZ: _this.opts.allowZ
-            });
+            case "ZZ":
+              // like +06:00
+              return formatOffset({
+                format: "short",
+                allowZ: _this.opts.allowZ
+              });
 
-          case "ZZZ":
-            // like +0600
-            return formatOffset({
-              format: "techie",
-              allowZ: _this.opts.allowZ
-            });
+            case "ZZZ":
+              // like +0600
+              return formatOffset({
+                format: "techie",
+                allowZ: _this.opts.allowZ
+              });
 
-          case "ZZZZ":
-            // like EST
-            return dt.zone.offsetName(dt.ts, {
-              format: "short",
-              locale: _this.loc.locale
-            });
+            case "ZZZZ":
+              // like EST
+              return dt.zone.offsetName(dt.ts, {
+                format: "short",
+                locale: _this.loc.locale
+              });
 
-          case "ZZZZZ":
-            // like Eastern Standard Time
-            return dt.zone.offsetName(dt.ts, {
-              format: "long",
-              locale: _this.loc.locale
-            });
-          // zone
+            case "ZZZZZ":
+              // like Eastern Standard Time
+              return dt.zone.offsetName(dt.ts, {
+                format: "long",
+                locale: _this.loc.locale
+              });
+              // zone
 
-          case "z":
-            // like America/New_York
-            return dt.zoneName;
-          // meridiems
+            case "z":
+              // like America/New_York
+              return dt.zoneName;
+              // meridiems
 
-          case "a":
-            return meridiem();
-          // dates
+            case "a":
+              return meridiem();
+              // dates
 
-          case "d":
-            return useDateTimeFormatter ? string({
-              day: "numeric"
-            }, "day") : _this.num(dt.day);
+            case "d":
+              return useDateTimeFormatter ? string({
+                day: "numeric"
+              }, "day") : _this.num(dt.day);
 
-          case "dd":
-            return useDateTimeFormatter ? string({
-              day: "2-digit"
-            }, "day") : _this.num(dt.day, 2);
-          // weekdays - standalone
+            case "dd":
+              return useDateTimeFormatter ? string({
+                day: "2-digit"
+              }, "day") : _this.num(dt.day, 2);
+              // weekdays - standalone
 
-          case "c":
-            // like 1
-            return _this.num(dt.weekday);
+            case "c":
+              // like 1
+              return _this.num(dt.weekday);
 
-          case "ccc":
-            // like 'Tues'
-            return weekday("short", true);
+            case "ccc":
+              // like 'Tues'
+              return weekday("short", true);
 
-          case "cccc":
-            // like 'Tuesday'
-            return weekday("long", true);
+            case "cccc":
+              // like 'Tuesday'
+              return weekday("long", true);
 
-          case "ccccc":
-            // like 'T'
-            return weekday("narrow", true);
-          // weekdays - format
+            case "ccccc":
+              // like 'T'
+              return weekday("narrow", true);
+              // weekdays - format
 
-          case "E":
-            // like 1
-            return _this.num(dt.weekday);
+            case "E":
+              // like 1
+              return _this.num(dt.weekday);
 
-          case "EEE":
-            // like 'Tues'
-            return weekday("short", false);
+            case "EEE":
+              // like 'Tues'
+              return weekday("short", false);
 
-          case "EEEE":
-            // like 'Tuesday'
-            return weekday("long", false);
+            case "EEEE":
+              // like 'Tuesday'
+              return weekday("long", false);
 
-          case "EEEEE":
-            // like 'T'
-            return weekday("narrow", false);
-          // months - standalone
+            case "EEEEE":
+              // like 'T'
+              return weekday("narrow", false);
+              // months - standalone
 
-          case "L":
-            // like 1
-            return useDateTimeFormatter ? string({
-              month: "numeric",
-              day: "numeric"
-            }, "month") : _this.num(dt.month);
+            case "L":
+              // like 1
+              return useDateTimeFormatter ? string({
+                month: "numeric",
+                day: "numeric"
+              }, "month") : _this.num(dt.month);
 
-          case "LL":
-            // like 01, doesn't seem to work
-            return useDateTimeFormatter ? string({
-              month: "2-digit",
-              day: "numeric"
-            }, "month") : _this.num(dt.month, 2);
+            case "LL":
+              // like 01, doesn't seem to work
+              return useDateTimeFormatter ? string({
+                month: "2-digit",
+                day: "numeric"
+              }, "month") : _this.num(dt.month, 2);
 
-          case "LLL":
-            // like Jan
-            return month("short", true);
+            case "LLL":
+              // like Jan
+              return month("short", true);
 
-          case "LLLL":
-            // like January
-            return month("long", true);
+            case "LLLL":
+              // like January
+              return month("long", true);
 
-          case "LLLLL":
-            // like J
-            return month("narrow", true);
-          // months - format
+            case "LLLLL":
+              // like J
+              return month("narrow", true);
+              // months - format
 
-          case "M":
-            // like 1
-            return useDateTimeFormatter ? string({
-              month: "numeric"
-            }, "month") : _this.num(dt.month);
+            case "M":
+              // like 1
+              return useDateTimeFormatter ? string({
+                month: "numeric"
+              }, "month") : _this.num(dt.month);
 
-          case "MM":
-            // like 01
-            return useDateTimeFormatter ? string({
-              month: "2-digit"
-            }, "month") : _this.num(dt.month, 2);
+            case "MM":
+              // like 01
+              return useDateTimeFormatter ? string({
+                month: "2-digit"
+              }, "month") : _this.num(dt.month, 2);
 
-          case "MMM":
-            // like Jan
-            return month("short", false);
+            case "MMM":
+              // like Jan
+              return month("short", false);
 
-          case "MMMM":
-            // like January
-            return month("long", false);
+            case "MMMM":
+              // like January
+              return month("long", false);
 
-          case "MMMMM":
-            // like J
-            return month("narrow", false);
-          // years
+            case "MMMMM":
+              // like J
+              return month("narrow", false);
+              // years
 
-          case "y":
-            // like 2014
-            return useDateTimeFormatter ? string({
-              year: "numeric"
-            }, "year") : _this.num(dt.year);
+            case "y":
+              // like 2014
+              return useDateTimeFormatter ? string({
+                year: "numeric"
+              }, "year") : _this.num(dt.year);
 
-          case "yy":
-            // like 14
-            return useDateTimeFormatter ? string({
-              year: "2-digit"
-            }, "year") : _this.num(dt.year.toString().slice(-2), 2);
+            case "yy":
+              // like 14
+              return useDateTimeFormatter ? string({
+                year: "2-digit"
+              }, "year") : _this.num(dt.year.toString().slice(-2), 2);
 
-          case "yyyy":
-            // like 0012
-            return useDateTimeFormatter ? string({
-              year: "numeric"
-            }, "year") : _this.num(dt.year, 4);
+            case "yyyy":
+              // like 0012
+              return useDateTimeFormatter ? string({
+                year: "numeric"
+              }, "year") : _this.num(dt.year, 4);
 
-          case "yyyyyy":
-            // like 000012
-            return useDateTimeFormatter ? string({
-              year: "numeric"
-            }, "year") : _this.num(dt.year, 6);
-          // eras
+            case "yyyyyy":
+              // like 000012
+              return useDateTimeFormatter ? string({
+                year: "numeric"
+              }, "year") : _this.num(dt.year, 6);
+              // eras
 
-          case "G":
-            // like AD
-            return era("short");
+            case "G":
+              // like AD
+              return era("short");
 
-          case "GG":
-            // like Anno Domini
-            return era("long");
+            case "GG":
+              // like Anno Domini
+              return era("long");
 
-          case "GGGGG":
-            return era("narrow");
+            case "GGGGG":
+              return era("narrow");
 
-          case "kk":
-            return _this.num(dt.weekYear.toString().slice(-2), 2);
+            case "kk":
+              return _this.num(dt.weekYear.toString().slice(-2), 2);
 
-          case "kkkk":
-            return _this.num(dt.weekYear, 4);
+            case "kkkk":
+              return _this.num(dt.weekYear, 4);
 
-          case "W":
-            return _this.num(dt.weekNumber);
+            case "W":
+              return _this.num(dt.weekNumber);
 
-          case "WW":
-            return _this.num(dt.weekNumber, 2);
+            case "WW":
+              return _this.num(dt.weekNumber, 2);
 
-          case "o":
-            return _this.num(dt.ordinal);
+            case "o":
+              return _this.num(dt.ordinal);
 
-          case "ooo":
-            return _this.num(dt.ordinal, 3);
+            case "ooo":
+              return _this.num(dt.ordinal, 3);
 
-          case "q":
-            // like 1
-            return _this.num(dt.quarter);
+            case "q":
+              // like 1
+              return _this.num(dt.quarter);
 
-          case "qq":
-            // like 01
-            return _this.num(dt.quarter, 2);
+            case "qq":
+              // like 01
+              return _this.num(dt.quarter, 2);
 
-          case "X":
-            return _this.num(Math.floor(dt.ts / 1000));
+            case "X":
+              return _this.num(Math.floor(dt.ts / 1000));
 
-          case "x":
-            return _this.num(dt.ts);
+            case "x":
+              return _this.num(dt.ts);
 
-          default:
-            return maybeMacro(token);
-        }
-      };
+            default:
+              return maybeMacro(token);
+          }
+        };
 
       return stringifyTokens(Formatter.parseFormat(fmt), tokenToString);
     };
@@ -1276,52 +1302,52 @@ var luxon = (function (exports) {
       var _this2 = this;
 
       var tokenToField = function tokenToField(token) {
-        switch (token[0]) {
-          case "S":
-            return "millisecond";
+          switch (token[0]) {
+            case "S":
+              return "millisecond";
 
-          case "s":
-            return "second";
+            case "s":
+              return "second";
 
-          case "m":
-            return "minute";
+            case "m":
+              return "minute";
 
-          case "h":
-            return "hour";
+            case "h":
+              return "hour";
 
-          case "d":
-            return "day";
+            case "d":
+              return "day";
 
-          case "M":
-            return "month";
+            case "M":
+              return "month";
 
-          case "y":
-            return "year";
+            case "y":
+              return "year";
 
-          default:
-            return null;
-        }
-      },
-          tokenToString = function tokenToString(lildur) {
-        return function (token) {
-          var mapped = tokenToField(token);
-
-          if (mapped) {
-            return _this2.num(lildur.get(mapped), token.length);
-          } else {
-            return token;
+            default:
+              return null;
           }
-        };
-      },
-          tokens = Formatter.parseFormat(fmt),
-          realTokens = tokens.reduce(function (found, _ref) {
-        var literal = _ref.literal,
+        },
+        tokenToString = function tokenToString(lildur) {
+          return function (token) {
+            var mapped = tokenToField(token);
+
+            if (mapped) {
+              return _this2.num(lildur.get(mapped), token.length);
+            } else {
+              return token;
+            }
+          };
+        },
+        tokens = Formatter.parseFormat(fmt),
+        realTokens = tokens.reduce(function (found, _ref) {
+          var literal = _ref.literal,
             val = _ref.val;
-        return literal ? found : found.concat(val);
-      }, []),
-          collapsed = dur.shiftTo.apply(dur, realTokens.map(tokenToField).filter(function (t) {
-        return t;
-      }));
+          return literal ? found : found.concat(val);
+        }, []),
+        collapsed = dur.shiftTo.apply(dur, realTokens.map(tokenToField).filter(function (t) {
+          return t;
+        }));
 
       return stringifyTokens(tokens, tokenToString(collapsed));
     };
@@ -1329,7 +1355,7 @@ var luxon = (function (exports) {
     return Formatter;
   }();
 
-  var Invalid = /*#__PURE__*/function () {
+  var Invalid = /*#__PURE__*/ function () {
     function Invalid(reason, explanation) {
       this.reason = reason;
       this.explanation = explanation;
@@ -1352,7 +1378,7 @@ var luxon = (function (exports) {
    * @interface
    */
 
-  var Zone = /*#__PURE__*/function () {
+  var Zone = /*#__PURE__*/ function () {
     function Zone() {}
 
     var _proto = Zone.prototype;
@@ -1414,14 +1440,14 @@ var luxon = (function (exports) {
     _createClass(Zone, [{
       key: "type",
       get:
-      /**
-       * The type of zone
-       * @abstract
-       * @type {string}
-       */
-      function get() {
-        throw new ZoneIsAbstractError();
-      }
+        /**
+         * The type of zone
+         * @abstract
+         * @type {string}
+         */
+        function get() {
+          throw new ZoneIsAbstractError();
+        }
       /**
        * The name of this zone.
        * @abstract
@@ -1460,7 +1486,7 @@ var luxon = (function (exports) {
    * @implements {Zone}
    */
 
-  var SystemZone = /*#__PURE__*/function (_Zone) {
+  var SystemZone = /*#__PURE__*/ function (_Zone) {
     _inheritsLoose(SystemZone, _Zone);
 
     function SystemZone() {
@@ -1472,7 +1498,7 @@ var luxon = (function (exports) {
     /** @override **/
     _proto.offsetName = function offsetName(ts, _ref) {
       var format = _ref.format,
-          locale = _ref.locale;
+        locale = _ref.locale;
       return parseZoneInfo(ts, format, locale);
     }
     /** @override **/
@@ -1499,10 +1525,10 @@ var luxon = (function (exports) {
     _createClass(SystemZone, [{
       key: "type",
       get:
-      /** @override **/
-      function get() {
-        return "system";
-      }
+        /** @override **/
+        function get() {
+          return "system";
+        }
       /** @override **/
 
     }, {
@@ -1525,17 +1551,17 @@ var luxon = (function (exports) {
     }], [{
       key: "instance",
       get:
-      /**
-       * Get a singleton instance of the local zone
-       * @return {SystemZone}
-       */
-      function get() {
-        if (singleton$1 === null) {
-          singleton$1 = new SystemZone();
-        }
+        /**
+         * Get a singleton instance of the local zone
+         * @return {SystemZone}
+         */
+        function get() {
+          if (singleton$1 === null) {
+            singleton$1 = new SystemZone();
+          }
 
-        return singleton$1;
-      }
+          return singleton$1;
+        }
     }]);
 
     return SystemZone;
@@ -1572,25 +1598,25 @@ var luxon = (function (exports) {
 
   function hackyOffset(dtf, date) {
     var formatted = dtf.format(date).replace(/\u200E/g, ""),
-        parsed = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(formatted),
-        fMonth = parsed[1],
-        fDay = parsed[2],
-        fYear = parsed[3],
-        fHour = parsed[4],
-        fMinute = parsed[5],
-        fSecond = parsed[6];
+      parsed = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(formatted),
+      fMonth = parsed[1],
+      fDay = parsed[2],
+      fYear = parsed[3],
+      fHour = parsed[4],
+      fMinute = parsed[5],
+      fSecond = parsed[6];
     return [fYear, fMonth, fDay, fHour, fMinute, fSecond];
   }
 
   function partsOffset(dtf, date) {
     var formatted = dtf.formatToParts(date),
-        filled = [];
+      filled = [];
 
     for (var i = 0; i < formatted.length; i++) {
       var _formatted$i = formatted[i],
-          type = _formatted$i.type,
-          value = _formatted$i.value,
-          pos = typeToPos[type];
+        type = _formatted$i.type,
+        value = _formatted$i.value,
+        pos = typeToPos[type];
 
       if (!isUndefined(pos)) {
         filled[pos] = parseInt(value, 10);
@@ -1606,7 +1632,7 @@ var luxon = (function (exports) {
    * @implements {Zone}
    */
 
-  var IANAZone = /*#__PURE__*/function (_Zone) {
+  var IANAZone = /*#__PURE__*/ function (_Zone) {
     _inheritsLoose(IANAZone, _Zone);
 
     /**
@@ -1699,7 +1725,7 @@ var luxon = (function (exports) {
     /** @override **/
     _proto.offsetName = function offsetName(ts, _ref) {
       var format = _ref.format,
-          locale = _ref.locale;
+        locale = _ref.locale;
       return parseZoneInfo(ts, format, locale, this.name);
     }
     /** @override **/
@@ -1716,13 +1742,13 @@ var luxon = (function (exports) {
       if (isNaN(date)) return NaN;
 
       var dtf = makeDTF(this.name),
-          _ref2 = dtf.formatToParts ? partsOffset(dtf, date) : hackyOffset(dtf, date),
-          year = _ref2[0],
-          month = _ref2[1],
-          day = _ref2[2],
-          hour = _ref2[3],
-          minute = _ref2[4],
-          second = _ref2[5];
+        _ref2 = dtf.formatToParts ? partsOffset(dtf, date) : hackyOffset(dtf, date),
+        year = _ref2[0],
+        month = _ref2[1],
+        day = _ref2[2],
+        hour = _ref2[3],
+        minute = _ref2[4],
+        second = _ref2[5];
 
       var asUTC = objToLocalTS({
         year: year,
@@ -1782,7 +1808,7 @@ var luxon = (function (exports) {
    * @implements {Zone}
    */
 
-  var FixedOffsetZone = /*#__PURE__*/function (_Zone) {
+  var FixedOffsetZone = /*#__PURE__*/ function (_Zone) {
     _inheritsLoose(FixedOffsetZone, _Zone);
 
     /**
@@ -1880,17 +1906,17 @@ var luxon = (function (exports) {
     }], [{
       key: "utcInstance",
       get:
-      /**
-       * Get a singleton instance of UTC
-       * @return {FixedOffsetZone}
-       */
-      function get() {
-        if (singleton === null) {
-          singleton = new FixedOffsetZone(0);
-        }
+        /**
+         * Get a singleton instance of UTC
+         * @return {FixedOffsetZone}
+         */
+        function get() {
+          if (singleton === null) {
+            singleton = new FixedOffsetZone(0);
+          }
 
-        return singleton;
-      }
+          return singleton;
+        }
     }]);
 
     return FixedOffsetZone;
@@ -1901,7 +1927,7 @@ var luxon = (function (exports) {
    * @implements {Zone}
    */
 
-  var InvalidZone = /*#__PURE__*/function (_Zone) {
+  var InvalidZone = /*#__PURE__*/ function (_Zone) {
     _inheritsLoose(InvalidZone, _Zone);
 
     function InvalidZone(zoneName) {
@@ -1984,10 +2010,13 @@ var luxon = (function (exports) {
       return input;
     } else if (isString(input)) {
       var lowered = input.toLowerCase();
-      if (lowered === "local" || lowered === "system") return defaultZone;else if (lowered === "utc" || lowered === "gmt") return FixedOffsetZone.utcInstance;else if ((offset = IANAZone.parseGMTOffset(input)) != null) {
+      if (lowered === "local" || lowered === "system") return defaultZone;
+      else if (lowered === "utc" || lowered === "gmt") return FixedOffsetZone.utcInstance;
+      else if ((offset = IANAZone.parseGMTOffset(input)) != null) {
         // handle Etc/GMT-4, which V8 chokes on
         return FixedOffsetZone.instance(offset);
-      } else if (IANAZone.isValidSpecifier(lowered)) return IANAZone.create(input);else return FixedOffsetZone.parseSpecifier(lowered) || new InvalidZone(input);
+      } else if (IANAZone.isValidSpecifier(lowered)) return IANAZone.create(input);
+      else return FixedOffsetZone.parseSpecifier(lowered) || new InvalidZone(input);
     } else if (isNumber(input)) {
       return FixedOffsetZone.instance(input);
     } else if (typeof input === "object" && input.offset && typeof input.offset === "number") {
@@ -2000,19 +2029,19 @@ var luxon = (function (exports) {
   }
 
   var now = function now() {
-    return Date.now();
-  },
-      defaultZone = "system",
-      defaultLocale = null,
-      defaultNumberingSystem = null,
-      defaultOutputCalendar = null,
-      throwOnInvalid;
+      return Date.now();
+    },
+    defaultZone = "system",
+    defaultLocale = null,
+    defaultNumberingSystem = null,
+    defaultOutputCalendar = null,
+    throwOnInvalid;
   /**
    * Settings contains static getters and setters that control Luxon's overall behavior. Luxon is a simple library with few options, but the ones it does have live here.
    */
 
 
-  var Settings = /*#__PURE__*/function () {
+  var Settings = /*#__PURE__*/ function () {
     function Settings() {}
 
     /**
@@ -2027,21 +2056,21 @@ var luxon = (function (exports) {
     _createClass(Settings, null, [{
       key: "now",
       get:
-      /**
-       * Get the callback for returning the current timestamp.
-       * @type {function}
-       */
-      function get() {
-        return now;
-      }
-      /**
-       * Set the callback for returning the current timestamp.
-       * The function should return a number, which will be interpreted as an Epoch millisecond count
-       * @type {function}
-       * @example Settings.now = () => Date.now() + 3000 // pretend it is 3 seconds in the future
-       * @example Settings.now = () => 0 // always pretend it's Jan 1, 1970 at midnight in UTC time
-       */
-      ,
+        /**
+         * Get the callback for returning the current timestamp.
+         * @type {function}
+         */
+        function get() {
+          return now;
+        }
+        /**
+         * Set the callback for returning the current timestamp.
+         * The function should return a number, which will be interpreted as an Epoch millisecond count
+         * @type {function}
+         * @example Settings.now = () => Date.now() + 3000 // pretend it is 3 seconds in the future
+         * @example Settings.now = () => 0 // always pretend it's Jan 1, 1970 at midnight in UTC time
+         */
+        ,
       set: function set(n) {
         now = n;
       }
@@ -2054,32 +2083,32 @@ var luxon = (function (exports) {
     }, {
       key: "defaultZone",
       get:
-      /**
-       * Get the default time zone object currently used to create DateTimes. Does not affect existing instances.
-       * The default value is the system's time zone (the one set on the machine that runs this code).
-       * @type {Zone}
-       */
-      function get() {
-        return normalizeZone(defaultZone, SystemZone.instance);
-      }
-      /**
-       * Get the default locale to create DateTimes with. Does not affect existing instances.
-       * @type {string}
-       */
-      ,
+        /**
+         * Get the default time zone object currently used to create DateTimes. Does not affect existing instances.
+         * The default value is the system's time zone (the one set on the machine that runs this code).
+         * @type {Zone}
+         */
+        function get() {
+          return normalizeZone(defaultZone, SystemZone.instance);
+        }
+        /**
+         * Get the default locale to create DateTimes with. Does not affect existing instances.
+         * @type {string}
+         */
+        ,
       set: function set(zone) {
         defaultZone = zone;
       }
     }, {
       key: "defaultLocale",
       get: function get() {
-        return defaultLocale;
-      }
-      /**
-       * Set the default locale to create DateTimes with. Does not affect existing instances.
-       * @type {string}
-       */
-      ,
+          return defaultLocale;
+        }
+        /**
+         * Set the default locale to create DateTimes with. Does not affect existing instances.
+         * @type {string}
+         */
+        ,
       set: function set(locale) {
         defaultLocale = locale;
       }
@@ -2091,13 +2120,13 @@ var luxon = (function (exports) {
     }, {
       key: "defaultNumberingSystem",
       get: function get() {
-        return defaultNumberingSystem;
-      }
-      /**
-       * Set the default numbering system to create DateTimes with. Does not affect existing instances.
-       * @type {string}
-       */
-      ,
+          return defaultNumberingSystem;
+        }
+        /**
+         * Set the default numbering system to create DateTimes with. Does not affect existing instances.
+         * @type {string}
+         */
+        ,
       set: function set(numberingSystem) {
         defaultNumberingSystem = numberingSystem;
       }
@@ -2109,13 +2138,13 @@ var luxon = (function (exports) {
     }, {
       key: "defaultOutputCalendar",
       get: function get() {
-        return defaultOutputCalendar;
-      }
-      /**
-       * Set the default output calendar to create DateTimes with. Does not affect existing instances.
-       * @type {string}
-       */
-      ,
+          return defaultOutputCalendar;
+        }
+        /**
+         * Set the default output calendar to create DateTimes with. Does not affect existing instances.
+         * @type {string}
+         */
+        ,
       set: function set(outputCalendar) {
         defaultOutputCalendar = outputCalendar;
       }
@@ -2127,13 +2156,13 @@ var luxon = (function (exports) {
     }, {
       key: "throwOnInvalid",
       get: function get() {
-        return throwOnInvalid;
-      }
-      /**
-       * Set whether Luxon will throw when it encounters invalid DateTimes, Durations, or Intervals
-       * @type {boolean}
-       */
-      ,
+          return throwOnInvalid;
+        }
+        /**
+         * Set whether Luxon will throw when it encounters invalid DateTimes, Durations, or Intervals
+         * @type {boolean}
+         */
+        ,
       set: function set(t) {
         throwOnInvalid = t;
       }
@@ -2187,8 +2216,8 @@ var luxon = (function (exports) {
     }
 
     var _opts = opts;
-        _opts.base;
-        var cacheKeyOpts = _objectWithoutPropertiesLoose(_opts, _excluded); // exclude `base` from the options
+    _opts.base;
+    var cacheKeyOpts = _objectWithoutPropertiesLoose(_opts, _excluded); // exclude `base` from the options
 
 
     var key = JSON.stringify([locString, cacheKeyOpts]);
@@ -2235,8 +2264,8 @@ var luxon = (function (exports) {
       }
 
       var _options = options,
-          numberingSystem = _options.numberingSystem,
-          calendar = _options.calendar; // return the smaller one so that we can append the calendar and numbering overrides to it
+        numberingSystem = _options.numberingSystem,
+        calendar = _options.calendar; // return the smaller one so that we can append the calendar and numbering overrides to it
 
       return [smaller, numberingSystem, calendar];
     }
@@ -2306,7 +2335,7 @@ var luxon = (function (exports) {
    */
 
 
-  var PolyNumberFormatter = /*#__PURE__*/function () {
+  var PolyNumberFormatter = /*#__PURE__*/ function () {
     function PolyNumberFormatter(intl, forceSimple, opts) {
       this.padTo = opts.padTo || 0;
       this.floor = opts.floor || false;
@@ -2341,7 +2370,7 @@ var luxon = (function (exports) {
    */
 
 
-  var PolyDateFormatter = /*#__PURE__*/function () {
+  var PolyDateFormatter = /*#__PURE__*/ function () {
     function PolyDateFormatter(dt, intl, opts) {
       this.opts = opts;
       var z;
@@ -2413,7 +2442,7 @@ var luxon = (function (exports) {
    */
 
 
-  var PolyRelFormatter = /*#__PURE__*/function () {
+  var PolyRelFormatter = /*#__PURE__*/ function () {
     function PolyRelFormatter(intl, isEnglish, opts) {
       this.opts = _extends({
         style: "long"
@@ -2449,7 +2478,7 @@ var luxon = (function (exports) {
    */
 
 
-  var Locale = /*#__PURE__*/function () {
+  var Locale = /*#__PURE__*/ function () {
     Locale.fromOpts = function fromOpts(opts) {
       return Locale.create(opts.locale, opts.numberingSystem, opts.outputCalendar, opts.defaultToEN);
     };
@@ -2460,10 +2489,10 @@ var luxon = (function (exports) {
       }
 
       var specifiedLocale = locale || Settings.defaultLocale,
-          // the system locale is useful for human readable strings but annoying for parsing/formatting known formats
-      localeR = specifiedLocale || (defaultToEN ? "en-US" : systemLocale()),
-          numberingSystemR = numberingSystem || Settings.defaultNumberingSystem,
-          outputCalendarR = outputCalendar || Settings.defaultOutputCalendar;
+        // the system locale is useful for human readable strings but annoying for parsing/formatting known formats
+        localeR = specifiedLocale || (defaultToEN ? "en-US" : systemLocale()),
+        numberingSystemR = numberingSystem || Settings.defaultNumberingSystem,
+        outputCalendarR = outputCalendar || Settings.defaultOutputCalendar;
       return new Locale(localeR, numberingSystemR, outputCalendarR, specifiedLocale);
     };
 
@@ -2476,18 +2505,18 @@ var luxon = (function (exports) {
 
     Locale.fromObject = function fromObject(_temp) {
       var _ref = _temp === void 0 ? {} : _temp,
-          locale = _ref.locale,
-          numberingSystem = _ref.numberingSystem,
-          outputCalendar = _ref.outputCalendar;
+        locale = _ref.locale,
+        numberingSystem = _ref.numberingSystem,
+        outputCalendar = _ref.outputCalendar;
 
       return Locale.create(locale, numberingSystem, outputCalendar);
     };
 
     function Locale(locale, numbering, outputCalendar, specifiedLocale) {
       var _parseLocaleString = parseLocaleString(locale),
-          parsedLocale = _parseLocaleString[0],
-          parsedNumberingSystem = _parseLocaleString[1],
-          parsedOutputCalendar = _parseLocaleString[2];
+        parsedLocale = _parseLocaleString[0],
+        parsedNumberingSystem = _parseLocaleString[1],
+        parsedOutputCalendar = _parseLocaleString[2];
 
       this.locale = parsedLocale;
       this.numberingSystem = numbering || parsedNumberingSystem || null;
@@ -2557,12 +2586,12 @@ var luxon = (function (exports) {
 
       return listStuff(this, length, defaultOK, months, function () {
         var intl = format ? {
-          month: length,
-          day: "numeric"
-        } : {
-          month: length
-        },
-            formatStr = format ? "format" : "standalone";
+            month: length,
+            day: "numeric"
+          } : {
+            month: length
+          },
+          formatStr = format ? "format" : "standalone";
 
         if (!_this.monthsCache[formatStr][length]) {
           _this.monthsCache[formatStr][length] = mapMonths(function (dt) {
@@ -2587,14 +2616,14 @@ var luxon = (function (exports) {
 
       return listStuff(this, length, defaultOK, weekdays, function () {
         var intl = format ? {
-          weekday: length,
-          year: "numeric",
-          month: "long",
-          day: "numeric"
-        } : {
-          weekday: length
-        },
-            formatStr = format ? "format" : "standalone";
+            weekday: length,
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          } : {
+            weekday: length
+          },
+          formatStr = format ? "format" : "standalone";
 
         if (!_this2.weekdaysCache[formatStr][length]) {
           _this2.weekdaysCache[formatStr][length] = mapWeekdays(function (dt) {
@@ -2657,10 +2686,10 @@ var luxon = (function (exports) {
 
     _proto4.extract = function extract(dt, intlOpts, field) {
       var df = this.dtFormatter(dt, intlOpts),
-          results = df.formatToParts(),
-          matching = results.find(function (m) {
-        return m.type.toLowerCase() === field;
-      });
+        results = df.formatToParts(),
+        matching = results.find(function (m) {
+          return m.type.toLowerCase() === field;
+        });
       return matching ? matching.value : null;
     };
 
@@ -2741,13 +2770,13 @@ var luxon = (function (exports) {
     return function (m) {
       return extractors.reduce(function (_ref, ex) {
         var mergedVals = _ref[0],
-            mergedZone = _ref[1],
-            cursor = _ref[2];
+          mergedZone = _ref[1],
+          cursor = _ref[2];
 
         var _ex = ex(m, cursor),
-            val = _ex[0],
-            zone = _ex[1],
-            next = _ex[2];
+          val = _ex[0],
+          zone = _ex[1],
+          next = _ex[2];
 
         return [_extends({}, mergedVals, val), mergedZone || zone, next];
       }, [{}, null, 1]).slice(0, 2);
@@ -2765,8 +2794,8 @@ var luxon = (function (exports) {
 
     for (var _i = 0, _patterns = patterns; _i < _patterns.length; _i++) {
       var _patterns$_i = _patterns[_i],
-          regex = _patterns$_i[0],
-          extractor = _patterns$_i[1];
+        regex = _patterns$_i[0],
+        extractor = _patterns$_i[1];
       var m = regex.exec(s);
 
       if (m) {
@@ -2796,18 +2825,18 @@ var luxon = (function (exports) {
 
 
   var offsetRegex = /(?:(Z)|([+-]\d\d)(?::?(\d\d))?)/,
-      isoTimeBaseRegex = /(\d\d)(?::?(\d\d)(?::?(\d\d)(?:[.,](\d{1,30}))?)?)?/,
-      isoTimeRegex = RegExp("" + isoTimeBaseRegex.source + offsetRegex.source + "?"),
-      isoTimeExtensionRegex = RegExp("(?:T" + isoTimeRegex.source + ")?"),
-      isoYmdRegex = /([+-]\d{6}|\d{4})(?:-?(\d\d)(?:-?(\d\d))?)?/,
-      isoWeekRegex = /(\d{4})-?W(\d\d)(?:-?(\d))?/,
-      isoOrdinalRegex = /(\d{4})-?(\d{3})/,
-      extractISOWeekData = simpleParse("weekYear", "weekNumber", "weekDay"),
-      extractISOOrdinalData = simpleParse("year", "ordinal"),
-      sqlYmdRegex = /(\d{4})-(\d\d)-(\d\d)/,
-      // dumbed-down version of the ISO one
-  sqlTimeRegex = RegExp(isoTimeBaseRegex.source + " ?(?:" + offsetRegex.source + "|(" + ianaRegex.source + "))?"),
-      sqlTimeExtensionRegex = RegExp("(?: " + sqlTimeRegex.source + ")?");
+    isoTimeBaseRegex = /(\d\d)(?::?(\d\d)(?::?(\d\d)(?:[.,](\d{1,30}))?)?)?/,
+    isoTimeRegex = RegExp("" + isoTimeBaseRegex.source + offsetRegex.source + "?"),
+    isoTimeExtensionRegex = RegExp("(?:T" + isoTimeRegex.source + ")?"),
+    isoYmdRegex = /([+-]\d{6}|\d{4})(?:-?(\d\d)(?:-?(\d\d))?)?/,
+    isoWeekRegex = /(\d{4})-?W(\d\d)(?:-?(\d))?/,
+    isoOrdinalRegex = /(\d{4})-?(\d{3})/,
+    extractISOWeekData = simpleParse("weekYear", "weekNumber", "weekDay"),
+    extractISOOrdinalData = simpleParse("year", "ordinal"),
+    sqlYmdRegex = /(\d{4})-(\d\d)-(\d\d)/,
+    // dumbed-down version of the ISO one
+    sqlTimeRegex = RegExp(isoTimeBaseRegex.source + " ?(?:" + offsetRegex.source + "|(" + ianaRegex.source + "))?"),
+    sqlTimeExtensionRegex = RegExp("(?: " + sqlTimeRegex.source + ")?");
 
   function int(match, pos, fallback) {
     var m = match[pos];
@@ -2835,8 +2864,8 @@ var luxon = (function (exports) {
 
   function extractISOOffset(match, cursor) {
     var local = !match[cursor] && !match[cursor + 1],
-        fullOffset = signedOffset(match[cursor + 1], match[cursor + 2]),
-        zone = local ? null : FixedOffsetZone.instance(fullOffset);
+      fullOffset = signedOffset(match[cursor + 1], match[cursor + 2]),
+      zone = local ? null : FixedOffsetZone.instance(fullOffset);
     return [{}, zone, cursor + 3];
   }
 
@@ -2852,14 +2881,14 @@ var luxon = (function (exports) {
 
   function extractISODuration(match) {
     var s = match[0],
-        yearStr = match[1],
-        monthStr = match[2],
-        weekStr = match[3],
-        dayStr = match[4],
-        hourStr = match[5],
-        minuteStr = match[6],
-        secondStr = match[7],
-        millisecondsStr = match[8];
+      yearStr = match[1],
+      monthStr = match[2],
+      weekStr = match[3],
+      dayStr = match[4],
+      hourStr = match[5],
+      minuteStr = match[6],
+      secondStr = match[7],
+      millisecondsStr = match[8];
     var hasNegativePrefix = s[0] === "-";
     var negativeSeconds = secondStr && secondStr[0] === "-";
 
@@ -2920,17 +2949,17 @@ var luxon = (function (exports) {
 
   function extractRFC2822(match) {
     var weekdayStr = match[1],
-        dayStr = match[2],
-        monthStr = match[3],
-        yearStr = match[4],
-        hourStr = match[5],
-        minuteStr = match[6],
-        secondStr = match[7],
-        obsOffset = match[8],
-        milOffset = match[9],
-        offHourStr = match[10],
-        offMinuteStr = match[11],
-        result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
+      dayStr = match[2],
+      monthStr = match[3],
+      yearStr = match[4],
+      hourStr = match[5],
+      minuteStr = match[6],
+      secondStr = match[7],
+      obsOffset = match[8],
+      milOffset = match[9],
+      offHourStr = match[10],
+      offMinuteStr = match[11],
+      result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
     var offset;
 
     if (obsOffset) {
@@ -2951,30 +2980,30 @@ var luxon = (function (exports) {
 
 
   var rfc1123 = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d\d) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d\d):(\d\d):(\d\d) GMT$/,
-      rfc850 = /^(Monday|Tuesday|Wedsday|Thursday|Friday|Saturday|Sunday), (\d\d)-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d\d) (\d\d):(\d\d):(\d\d) GMT$/,
-      ascii = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( \d|\d\d) (\d\d):(\d\d):(\d\d) (\d{4})$/;
+    rfc850 = /^(Monday|Tuesday|Wedsday|Thursday|Friday|Saturday|Sunday), (\d\d)-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d\d) (\d\d):(\d\d):(\d\d) GMT$/,
+    ascii = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( \d|\d\d) (\d\d):(\d\d):(\d\d) (\d{4})$/;
 
   function extractRFC1123Or850(match) {
     var weekdayStr = match[1],
-        dayStr = match[2],
-        monthStr = match[3],
-        yearStr = match[4],
-        hourStr = match[5],
-        minuteStr = match[6],
-        secondStr = match[7],
-        result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
+      dayStr = match[2],
+      monthStr = match[3],
+      yearStr = match[4],
+      hourStr = match[5],
+      minuteStr = match[6],
+      secondStr = match[7],
+      result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
     return [result, FixedOffsetZone.utcInstance];
   }
 
   function extractASCII(match) {
     var weekdayStr = match[1],
-        monthStr = match[2],
-        dayStr = match[3],
-        hourStr = match[4],
-        minuteStr = match[5],
-        secondStr = match[6],
-        yearStr = match[7],
-        result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
+      monthStr = match[2],
+      dayStr = match[3],
+      hourStr = match[4],
+      minuteStr = match[5],
+      secondStr = match[6],
+      yearStr = match[7],
+      result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
     return [result, FixedOffsetZone.utcInstance];
   }
 
@@ -2993,16 +3022,20 @@ var luxon = (function (exports) {
   function parseISODate(s) {
     return parse(s, [isoYmdWithTimeExtensionRegex, extractISOYmdTimeAndOffset], [isoWeekWithTimeExtensionRegex, extractISOWeekTimeAndOffset], [isoOrdinalWithTimeExtensionRegex, extractISOOrdinalDateAndTime], [isoTimeCombinedRegex, extractISOTimeAndOffset]);
   }
+
   function parseRFC2822Date(s) {
     return parse(preprocessRFC2822(s), [rfc2822, extractRFC2822]);
   }
+
   function parseHTTPDate(s) {
     return parse(s, [rfc1123, extractRFC1123Or850], [rfc850, extractRFC1123Or850], [ascii, extractASCII]);
   }
+
   function parseISODuration(s) {
     return parse(s, [isoDuration, extractISODuration]);
   }
   var extractISOTimeOnly = combineExtractors(extractISOTime);
+
   function parseISOTimeOnly(s) {
     return parse(s, [isoTimeOnly, extractISOTimeOnly]);
   }
@@ -3010,6 +3043,7 @@ var luxon = (function (exports) {
   var sqlTimeCombinedRegex = combineRegexes(sqlTimeRegex);
   var extractISOYmdTimeOffsetAndIANAZone = combineExtractors(extractISOYmd, extractISOTime, extractISOOffset, extractIANAZone);
   var extractISOTimeOffsetAndIANAZone = combineExtractors(extractISOTime, extractISOOffset, extractIANAZone);
+
   function parseSQL(s) {
     return parse(s, [sqlYmdWithTimeExtensionRegex, extractISOYmdTimeOffsetAndIANAZone], [sqlTimeCombinedRegex, extractISOTimeOffsetAndIANAZone]);
   }
@@ -3017,92 +3051,92 @@ var luxon = (function (exports) {
   var INVALID$2 = "Invalid Duration"; // unit conversion constants
 
   var lowOrderMatrix = {
-    weeks: {
-      days: 7,
-      hours: 7 * 24,
-      minutes: 7 * 24 * 60,
-      seconds: 7 * 24 * 60 * 60,
-      milliseconds: 7 * 24 * 60 * 60 * 1000
+      weeks: {
+        days: 7,
+        hours: 7 * 24,
+        minutes: 7 * 24 * 60,
+        seconds: 7 * 24 * 60 * 60,
+        milliseconds: 7 * 24 * 60 * 60 * 1000
+      },
+      days: {
+        hours: 24,
+        minutes: 24 * 60,
+        seconds: 24 * 60 * 60,
+        milliseconds: 24 * 60 * 60 * 1000
+      },
+      hours: {
+        minutes: 60,
+        seconds: 60 * 60,
+        milliseconds: 60 * 60 * 1000
+      },
+      minutes: {
+        seconds: 60,
+        milliseconds: 60 * 1000
+      },
+      seconds: {
+        milliseconds: 1000
+      }
     },
-    days: {
-      hours: 24,
-      minutes: 24 * 60,
-      seconds: 24 * 60 * 60,
-      milliseconds: 24 * 60 * 60 * 1000
-    },
-    hours: {
-      minutes: 60,
-      seconds: 60 * 60,
-      milliseconds: 60 * 60 * 1000
-    },
-    minutes: {
-      seconds: 60,
-      milliseconds: 60 * 1000
-    },
-    seconds: {
-      milliseconds: 1000
-    }
-  },
-      casualMatrix = _extends({
-    years: {
-      quarters: 4,
-      months: 12,
-      weeks: 52,
-      days: 365,
-      hours: 365 * 24,
-      minutes: 365 * 24 * 60,
-      seconds: 365 * 24 * 60 * 60,
-      milliseconds: 365 * 24 * 60 * 60 * 1000
-    },
-    quarters: {
-      months: 3,
-      weeks: 13,
-      days: 91,
-      hours: 91 * 24,
-      minutes: 91 * 24 * 60,
-      seconds: 91 * 24 * 60 * 60,
-      milliseconds: 91 * 24 * 60 * 60 * 1000
-    },
-    months: {
-      weeks: 4,
-      days: 30,
-      hours: 30 * 24,
-      minutes: 30 * 24 * 60,
-      seconds: 30 * 24 * 60 * 60,
-      milliseconds: 30 * 24 * 60 * 60 * 1000
-    }
-  }, lowOrderMatrix),
-      daysInYearAccurate = 146097.0 / 400,
-      daysInMonthAccurate = 146097.0 / 4800,
-      accurateMatrix = _extends({
-    years: {
-      quarters: 4,
-      months: 12,
-      weeks: daysInYearAccurate / 7,
-      days: daysInYearAccurate,
-      hours: daysInYearAccurate * 24,
-      minutes: daysInYearAccurate * 24 * 60,
-      seconds: daysInYearAccurate * 24 * 60 * 60,
-      milliseconds: daysInYearAccurate * 24 * 60 * 60 * 1000
-    },
-    quarters: {
-      months: 3,
-      weeks: daysInYearAccurate / 28,
-      days: daysInYearAccurate / 4,
-      hours: daysInYearAccurate * 24 / 4,
-      minutes: daysInYearAccurate * 24 * 60 / 4,
-      seconds: daysInYearAccurate * 24 * 60 * 60 / 4,
-      milliseconds: daysInYearAccurate * 24 * 60 * 60 * 1000 / 4
-    },
-    months: {
-      weeks: daysInMonthAccurate / 7,
-      days: daysInMonthAccurate,
-      hours: daysInMonthAccurate * 24,
-      minutes: daysInMonthAccurate * 24 * 60,
-      seconds: daysInMonthAccurate * 24 * 60 * 60,
-      milliseconds: daysInMonthAccurate * 24 * 60 * 60 * 1000
-    }
-  }, lowOrderMatrix); // units ordered by size
+    casualMatrix = _extends({
+      years: {
+        quarters: 4,
+        months: 12,
+        weeks: 52,
+        days: 365,
+        hours: 365 * 24,
+        minutes: 365 * 24 * 60,
+        seconds: 365 * 24 * 60 * 60,
+        milliseconds: 365 * 24 * 60 * 60 * 1000
+      },
+      quarters: {
+        months: 3,
+        weeks: 13,
+        days: 91,
+        hours: 91 * 24,
+        minutes: 91 * 24 * 60,
+        seconds: 91 * 24 * 60 * 60,
+        milliseconds: 91 * 24 * 60 * 60 * 1000
+      },
+      months: {
+        weeks: 4,
+        days: 30,
+        hours: 30 * 24,
+        minutes: 30 * 24 * 60,
+        seconds: 30 * 24 * 60 * 60,
+        milliseconds: 30 * 24 * 60 * 60 * 1000
+      }
+    }, lowOrderMatrix),
+    daysInYearAccurate = 146097.0 / 400,
+    daysInMonthAccurate = 146097.0 / 4800,
+    accurateMatrix = _extends({
+      years: {
+        quarters: 4,
+        months: 12,
+        weeks: daysInYearAccurate / 7,
+        days: daysInYearAccurate,
+        hours: daysInYearAccurate * 24,
+        minutes: daysInYearAccurate * 24 * 60,
+        seconds: daysInYearAccurate * 24 * 60 * 60,
+        milliseconds: daysInYearAccurate * 24 * 60 * 60 * 1000
+      },
+      quarters: {
+        months: 3,
+        weeks: daysInYearAccurate / 28,
+        days: daysInYearAccurate / 4,
+        hours: daysInYearAccurate * 24 / 4,
+        minutes: daysInYearAccurate * 24 * 60 / 4,
+        seconds: daysInYearAccurate * 24 * 60 * 60 / 4,
+        milliseconds: daysInYearAccurate * 24 * 60 * 60 * 1000 / 4
+      },
+      months: {
+        weeks: daysInMonthAccurate / 7,
+        days: daysInMonthAccurate,
+        hours: daysInMonthAccurate * 24,
+        minutes: daysInMonthAccurate * 24 * 60,
+        seconds: daysInMonthAccurate * 24 * 60 * 60,
+        milliseconds: daysInMonthAccurate * 24 * 60 * 60 * 1000
+      }
+    }, lowOrderMatrix); // units ordered by size
 
 
   var orderedUnits$1 = ["years", "quarters", "months", "weeks", "days", "hours", "minutes", "seconds", "milliseconds"];
@@ -3129,10 +3163,10 @@ var luxon = (function (exports) {
 
   function convert(matrix, fromMap, fromUnit, toMap, toUnit) {
     var conv = matrix[toUnit][fromUnit],
-        raw = fromMap[fromUnit] / conv,
-        sameSign = Math.sign(raw) === Math.sign(toMap[toUnit]),
-        // ok, so this is wild, but see the matrix in the tests
-    added = !sameSign && toMap[toUnit] !== 0 && Math.abs(raw) <= 1 ? antiTrunc(raw) : Math.trunc(raw);
+      raw = fromMap[fromUnit] / conv,
+      sameSign = Math.sign(raw) === Math.sign(toMap[toUnit]),
+      // ok, so this is wild, but see the matrix in the tests
+      added = !sameSign && toMap[toUnit] !== 0 && Math.abs(raw) <= 1 ? antiTrunc(raw) : Math.trunc(raw);
     toMap[toUnit] += added;
     fromMap[fromUnit] -= added * conv;
   } // NB: mutates parameters
@@ -3166,7 +3200,7 @@ var luxon = (function (exports) {
    */
 
 
-  var Duration = /*#__PURE__*/function () {
+  var Duration = /*#__PURE__*/ function () {
     /**
      * @private
      */
@@ -3272,7 +3306,7 @@ var luxon = (function (exports) {
 
     Duration.fromISO = function fromISO(text, opts) {
       var _parseISODuration = parseISODuration(text),
-          parsed = _parseISODuration[0];
+        parsed = _parseISODuration[0];
 
       if (parsed) {
         return Duration.fromObject(parsed, opts);
@@ -3299,7 +3333,7 @@ var luxon = (function (exports) {
 
     Duration.fromISOTime = function fromISOTime(text, opts) {
       var _parseISOTimeOnly = parseISOTimeOnly(text),
-          parsed = _parseISOTimeOnly[0];
+        parsed = _parseISOTimeOnly[0];
 
       if (parsed) {
         return Duration.fromObject(parsed, opts);
@@ -3359,7 +3393,7 @@ var luxon = (function (exports) {
         seconds: "seconds",
         millisecond: "milliseconds",
         milliseconds: "milliseconds"
-      }[unit ? unit.toLowerCase() : unit];
+      } [unit ? unit.toLowerCase() : unit];
       if (!normalized) throw new InvalidUnitError(unit);
       return normalized;
     }
@@ -3550,7 +3584,7 @@ var luxon = (function (exports) {
     _proto.plus = function plus(duration) {
       if (!this.isValid) return this;
       var dur = friendlyDuration(duration),
-          result = {};
+        result = {};
 
       for (var _iterator = _createForOfIteratorHelperLoose(orderedUnits$1), _step; !(_step = _iterator()).done;) {
         var k = _step.value;
@@ -3638,17 +3672,17 @@ var luxon = (function (exports) {
 
     _proto.reconfigure = function reconfigure(_temp) {
       var _ref = _temp === void 0 ? {} : _temp,
-          locale = _ref.locale,
-          numberingSystem = _ref.numberingSystem,
-          conversionAccuracy = _ref.conversionAccuracy;
+        locale = _ref.locale,
+        numberingSystem = _ref.numberingSystem,
+        conversionAccuracy = _ref.conversionAccuracy;
 
       var loc = this.loc.clone({
-        locale: locale,
-        numberingSystem: numberingSystem
-      }),
-          opts = {
-        loc: loc
-      };
+          locale: locale,
+          numberingSystem: numberingSystem
+        }),
+        opts = {
+          loc: loc
+        };
 
       if (conversionAccuracy) {
         opts.conversionAccuracy = conversionAccuracy;
@@ -3707,8 +3741,8 @@ var luxon = (function (exports) {
         return Duration.normalizeUnit(u);
       });
       var built = {},
-          accumulated = {},
-          vals = this.toObject();
+        accumulated = {},
+        vals = this.toObject();
       var lastUnit;
 
       for (var _iterator2 = _createForOfIteratorHelperLoose(orderedUnits$1), _step2; !(_step2 = _iterator2()).done;) {
@@ -3950,6 +3984,7 @@ var luxon = (function (exports) {
 
     return Duration;
   }();
+
   function friendlyDuration(durationish) {
     if (isNumber(durationish)) {
       return Duration.fromMillis(durationish);
@@ -3989,7 +4024,7 @@ var luxon = (function (exports) {
    */
 
 
-  var Interval = /*#__PURE__*/function () {
+  var Interval = /*#__PURE__*/ function () {
     /**
      * @private
      */
@@ -4051,7 +4086,7 @@ var luxon = (function (exports) {
 
     Interval.fromDateTimes = function fromDateTimes(start, end) {
       var builtStart = friendlyDateTime(start),
-          builtEnd = friendlyDateTime(end);
+        builtEnd = friendlyDateTime(end);
       var validateError = validateStartEnd(builtStart, builtEnd);
 
       if (validateError == null) {
@@ -4073,7 +4108,7 @@ var luxon = (function (exports) {
 
     Interval.after = function after(start, duration) {
       var dur = friendlyDuration(duration),
-          dt = friendlyDateTime(start);
+        dt = friendlyDateTime(start);
       return Interval.fromDateTimes(dt, dt.plus(dur));
     }
     /**
@@ -4086,7 +4121,7 @@ var luxon = (function (exports) {
 
     Interval.before = function before(end, duration) {
       var dur = friendlyDuration(duration),
-          dt = friendlyDateTime(end);
+        dt = friendlyDateTime(end);
       return Interval.fromDateTimes(dt.minus(dur), dt);
     }
     /**
@@ -4101,8 +4136,8 @@ var luxon = (function (exports) {
 
     Interval.fromISO = function fromISO(text, opts) {
       var _split = (text || "").split("/", 2),
-          s = _split[0],
-          e = _split[1];
+        s = _split[0],
+        e = _split[1];
 
       if (s && e) {
         var start, startIsValid;
@@ -4190,7 +4225,7 @@ var luxon = (function (exports) {
 
       if (!this.isValid) return NaN;
       var start = this.start.startOf(unit),
-          end = this.end.startOf(unit);
+        end = this.end.startOf(unit);
       return Math.floor(end.diff(start, unit).get(unit)) + 1;
     }
     /**
@@ -4256,8 +4291,8 @@ var luxon = (function (exports) {
 
     _proto.set = function set(_temp) {
       var _ref = _temp === void 0 ? {} : _temp,
-          start = _ref.start,
-          end = _ref.end;
+        start = _ref.start,
+        end = _ref.end;
 
       if (!this.isValid) return this;
       return Interval.fromDateTimes(start || this.s, end || this.e);
@@ -4279,15 +4314,15 @@ var luxon = (function (exports) {
       }
 
       var sorted = dateTimes.map(friendlyDateTime).filter(function (d) {
-        return _this.contains(d);
-      }).sort(),
-          results = [];
+          return _this.contains(d);
+        }).sort(),
+        results = [];
       var s = this.s,
-          i = 0;
+        i = 0;
 
       while (s < this.e) {
         var added = sorted[i] || this.e,
-            next = +added > +this.e ? this.e : added;
+          next = +added > +this.e ? this.e : added;
         results.push(Interval.fromDateTimes(s, next));
         s = next;
         i += 1;
@@ -4311,8 +4346,8 @@ var luxon = (function (exports) {
       }
 
       var s = this.s,
-          idx = 1,
-          next;
+        idx = 1,
+        next;
       var results = [];
 
       while (s < this.e) {
@@ -4407,7 +4442,7 @@ var luxon = (function (exports) {
     _proto.intersection = function intersection(other) {
       if (!this.isValid) return this;
       var s = this.s > other.s ? this.s : other.s,
-          e = this.e < other.e ? this.e : other.e;
+        e = this.e < other.e ? this.e : other.e;
 
       if (s >= e) {
         return null;
@@ -4426,7 +4461,7 @@ var luxon = (function (exports) {
     _proto.union = function union(other) {
       if (!this.isValid) return this;
       var s = this.s < other.s ? this.s : other.s,
-          e = this.e > other.e ? this.e : other.e;
+        e = this.e > other.e ? this.e : other.e;
       return Interval.fromDateTimes(s, e);
     }
     /**
@@ -4439,21 +4474,23 @@ var luxon = (function (exports) {
 
     Interval.merge = function merge(intervals) {
       var _intervals$sort$reduc = intervals.sort(function (a, b) {
-        return a.s - b.s;
-      }).reduce(function (_ref2, item) {
-        var sofar = _ref2[0],
+          return a.s - b.s;
+        }).reduce(function (_ref2, item) {
+          var sofar = _ref2[0],
             current = _ref2[1];
 
-        if (!current) {
-          return [sofar, item];
-        } else if (current.overlaps(item) || current.abutsStart(item)) {
-          return [sofar, current.union(item)];
-        } else {
-          return [sofar.concat([current]), item];
-        }
-      }, [[], null]),
-          found = _intervals$sort$reduc[0],
-          final = _intervals$sort$reduc[1];
+          if (!current) {
+            return [sofar, item];
+          } else if (current.overlaps(item) || current.abutsStart(item)) {
+            return [sofar, current.union(item)];
+          } else {
+            return [sofar.concat([current]), item];
+          }
+        }, [
+          [], null
+        ]),
+        found = _intervals$sort$reduc[0],
+        final = _intervals$sort$reduc[1];
 
       if (final) {
         found.push(final);
@@ -4472,22 +4509,22 @@ var luxon = (function (exports) {
       var _Array$prototype;
 
       var start = null,
-          currentCount = 0;
+        currentCount = 0;
 
       var results = [],
-          ends = intervals.map(function (i) {
-        return [{
-          time: i.s,
-          type: "s"
-        }, {
-          time: i.e,
-          type: "e"
-        }];
-      }),
-          flattened = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, ends),
-          arr = flattened.sort(function (a, b) {
-        return a.time - b.time;
-      });
+        ends = intervals.map(function (i) {
+          return [{
+            time: i.s,
+            type: "s"
+          }, {
+            time: i.e,
+            type: "e"
+          }];
+        }),
+        flattened = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, ends),
+        arr = flattened.sort(function (a, b) {
+          return a.time - b.time;
+        });
 
       for (var _iterator = _createForOfIteratorHelperLoose(arr), _step; !(_step = _iterator()).done;) {
         var i = _step.value;
@@ -4584,8 +4621,8 @@ var luxon = (function (exports) {
 
     _proto.toFormat = function toFormat(dateFormat, _temp2) {
       var _ref3 = _temp2 === void 0 ? {} : _temp2,
-          _ref3$separator = _ref3.separator,
-          separator = _ref3$separator === void 0 ? " – " : _ref3$separator;
+        _ref3$separator = _ref3.separator,
+        separator = _ref3$separator === void 0 ? " – " : _ref3$separator;
 
       if (!this.isValid) return INVALID$1;
       return "" + this.s.toFormat(dateFormat) + separator + this.e.toFormat(dateFormat);
@@ -4678,7 +4715,7 @@ var luxon = (function (exports) {
    * The Info class contains static methods for retrieving general time and date related data. For example, it has methods for finding out if a time zone has a DST, for listing the months in any supported locale, and for discovering which of Luxon features are available in the current environment.
    */
 
-  var Info = /*#__PURE__*/function () {
+  var Info = /*#__PURE__*/ function () {
     function Info() {}
 
     /**
@@ -4752,14 +4789,14 @@ var luxon = (function (exports) {
       }
 
       var _ref = _temp === void 0 ? {} : _temp,
-          _ref$locale = _ref.locale,
-          locale = _ref$locale === void 0 ? null : _ref$locale,
-          _ref$numberingSystem = _ref.numberingSystem,
-          numberingSystem = _ref$numberingSystem === void 0 ? null : _ref$numberingSystem,
-          _ref$locObj = _ref.locObj,
-          locObj = _ref$locObj === void 0 ? null : _ref$locObj,
-          _ref$outputCalendar = _ref.outputCalendar,
-          outputCalendar = _ref$outputCalendar === void 0 ? "gregory" : _ref$outputCalendar;
+        _ref$locale = _ref.locale,
+        locale = _ref$locale === void 0 ? null : _ref$locale,
+        _ref$numberingSystem = _ref.numberingSystem,
+        numberingSystem = _ref$numberingSystem === void 0 ? null : _ref$numberingSystem,
+        _ref$locObj = _ref.locObj,
+        locObj = _ref$locObj === void 0 ? null : _ref$locObj,
+        _ref$outputCalendar = _ref.outputCalendar,
+        outputCalendar = _ref$outputCalendar === void 0 ? "gregory" : _ref$outputCalendar;
 
       return (locObj || Locale.create(locale, numberingSystem, outputCalendar)).months(length);
     }
@@ -4784,14 +4821,14 @@ var luxon = (function (exports) {
       }
 
       var _ref2 = _temp2 === void 0 ? {} : _temp2,
-          _ref2$locale = _ref2.locale,
-          locale = _ref2$locale === void 0 ? null : _ref2$locale,
-          _ref2$numberingSystem = _ref2.numberingSystem,
-          numberingSystem = _ref2$numberingSystem === void 0 ? null : _ref2$numberingSystem,
-          _ref2$locObj = _ref2.locObj,
-          locObj = _ref2$locObj === void 0 ? null : _ref2$locObj,
-          _ref2$outputCalendar = _ref2.outputCalendar,
-          outputCalendar = _ref2$outputCalendar === void 0 ? "gregory" : _ref2$outputCalendar;
+        _ref2$locale = _ref2.locale,
+        locale = _ref2$locale === void 0 ? null : _ref2$locale,
+        _ref2$numberingSystem = _ref2.numberingSystem,
+        numberingSystem = _ref2$numberingSystem === void 0 ? null : _ref2$numberingSystem,
+        _ref2$locObj = _ref2.locObj,
+        locObj = _ref2$locObj === void 0 ? null : _ref2$locObj,
+        _ref2$outputCalendar = _ref2.outputCalendar,
+        outputCalendar = _ref2$outputCalendar === void 0 ? "gregory" : _ref2$outputCalendar;
 
       return (locObj || Locale.create(locale, numberingSystem, outputCalendar)).months(length, true);
     }
@@ -4817,12 +4854,12 @@ var luxon = (function (exports) {
       }
 
       var _ref3 = _temp3 === void 0 ? {} : _temp3,
-          _ref3$locale = _ref3.locale,
-          locale = _ref3$locale === void 0 ? null : _ref3$locale,
-          _ref3$numberingSystem = _ref3.numberingSystem,
-          numberingSystem = _ref3$numberingSystem === void 0 ? null : _ref3$numberingSystem,
-          _ref3$locObj = _ref3.locObj,
-          locObj = _ref3$locObj === void 0 ? null : _ref3$locObj;
+        _ref3$locale = _ref3.locale,
+        locale = _ref3$locale === void 0 ? null : _ref3$locale,
+        _ref3$numberingSystem = _ref3.numberingSystem,
+        numberingSystem = _ref3$numberingSystem === void 0 ? null : _ref3$numberingSystem,
+        _ref3$locObj = _ref3.locObj,
+        locObj = _ref3$locObj === void 0 ? null : _ref3$locObj;
 
       return (locObj || Locale.create(locale, numberingSystem, null)).weekdays(length);
     }
@@ -4846,12 +4883,12 @@ var luxon = (function (exports) {
       }
 
       var _ref4 = _temp4 === void 0 ? {} : _temp4,
-          _ref4$locale = _ref4.locale,
-          locale = _ref4$locale === void 0 ? null : _ref4$locale,
-          _ref4$numberingSystem = _ref4.numberingSystem,
-          numberingSystem = _ref4$numberingSystem === void 0 ? null : _ref4$numberingSystem,
-          _ref4$locObj = _ref4.locObj,
-          locObj = _ref4$locObj === void 0 ? null : _ref4$locObj;
+        _ref4$locale = _ref4.locale,
+        locale = _ref4$locale === void 0 ? null : _ref4$locale,
+        _ref4$numberingSystem = _ref4.numberingSystem,
+        numberingSystem = _ref4$numberingSystem === void 0 ? null : _ref4$numberingSystem,
+        _ref4$locObj = _ref4.locObj,
+        locObj = _ref4$locObj === void 0 ? null : _ref4$locObj;
 
       return (locObj || Locale.create(locale, numberingSystem, null)).weekdays(length, true);
     }
@@ -4867,8 +4904,8 @@ var luxon = (function (exports) {
 
     Info.meridiems = function meridiems(_temp5) {
       var _ref5 = _temp5 === void 0 ? {} : _temp5,
-          _ref5$locale = _ref5.locale,
-          locale = _ref5$locale === void 0 ? null : _ref5$locale;
+        _ref5$locale = _ref5.locale,
+        locale = _ref5$locale === void 0 ? null : _ref5$locale;
 
       return Locale.create(locale).meridiems();
     }
@@ -4890,8 +4927,8 @@ var luxon = (function (exports) {
       }
 
       var _ref6 = _temp6 === void 0 ? {} : _temp6,
-          _ref6$locale = _ref6.locale,
-          locale = _ref6$locale === void 0 ? null : _ref6$locale;
+        _ref6$locale = _ref6.locale,
+        locale = _ref6$locale === void 0 ? null : _ref6$locale;
 
       return Locale.create(locale, null, "gregory").eras(length);
     }
@@ -4919,33 +4956,39 @@ var luxon = (function (exports) {
 
   function dayDiff(earlier, later) {
     var utcDayStart = function utcDayStart(dt) {
-      return dt.toUTC(0, {
-        keepLocalTime: true
-      }).startOf("day").valueOf();
-    },
-        ms = utcDayStart(later) - utcDayStart(earlier);
+        return dt.toUTC(0, {
+          keepLocalTime: true
+        }).startOf("day").valueOf();
+      },
+      ms = utcDayStart(later) - utcDayStart(earlier);
 
     return Math.floor(Duration.fromMillis(ms).as("days"));
   }
 
   function highOrderDiffs(cursor, later, units) {
-    var differs = [["years", function (a, b) {
-      return b.year - a.year;
-    }], ["quarters", function (a, b) {
-      return b.quarter - a.quarter;
-    }], ["months", function (a, b) {
-      return b.month - a.month + (b.year - a.year) * 12;
-    }], ["weeks", function (a, b) {
-      var days = dayDiff(a, b);
-      return (days - days % 7) / 7;
-    }], ["days", dayDiff]];
+    var differs = [
+      ["years", function (a, b) {
+        return b.year - a.year;
+      }],
+      ["quarters", function (a, b) {
+        return b.quarter - a.quarter;
+      }],
+      ["months", function (a, b) {
+        return b.month - a.month + (b.year - a.year) * 12;
+      }],
+      ["weeks", function (a, b) {
+        var days = dayDiff(a, b);
+        return (days - days % 7) / 7;
+      }],
+      ["days", dayDiff]
+    ];
     var results = {};
     var lowestOrder, highWater;
 
     for (var _i = 0, _differs = differs; _i < _differs.length; _i++) {
       var _differs$_i = _differs[_i],
-          unit = _differs$_i[0],
-          differ = _differs$_i[1];
+        unit = _differs$_i[0],
+        differ = _differs$_i[1];
 
       if (units.indexOf(unit) >= 0) {
         var _cursor$plus;
@@ -4970,12 +5013,12 @@ var luxon = (function (exports) {
     return [cursor, results, highWater, lowestOrder];
   }
 
-  function _diff (earlier, later, units, opts) {
+  function _diff(earlier, later, units, opts) {
     var _highOrderDiffs = highOrderDiffs(earlier, later, units),
-        cursor = _highOrderDiffs[0],
-        results = _highOrderDiffs[1],
-        highWater = _highOrderDiffs[2],
-        lowestOrder = _highOrderDiffs[3];
+      cursor = _highOrderDiffs[0],
+      results = _highOrderDiffs[1],
+      highWater = _highOrderDiffs[2],
+      lowestOrder = _highOrderDiffs[3];
 
     var remainingMillis = later - cursor;
     var lowerOrderUnits = units.filter(function (u) {
@@ -5050,6 +5093,7 @@ var luxon = (function (exports) {
     tibt: [3872, 3881]
   };
   var hanidecChars = numberingSystems.hanidec.replace(/[\[|\]]/g, "").split("");
+
   function parseDigits(str) {
     var value = parseInt(str, 10);
 
@@ -5064,8 +5108,8 @@ var luxon = (function (exports) {
         } else {
           for (var key in numberingSystemsUTF16) {
             var _numberingSystemsUTF = numberingSystemsUTF16[key],
-                min = _numberingSystemsUTF[0],
-                max = _numberingSystemsUTF[1];
+              min = _numberingSystemsUTF[0],
+              max = _numberingSystemsUTF[1];
 
             if (code >= min && code <= max) {
               value += code - min;
@@ -5079,6 +5123,7 @@ var luxon = (function (exports) {
       return value;
     }
   }
+
   function digitRegex(_ref, append) {
     var numberingSystem = _ref.numberingSystem;
 
@@ -5119,8 +5164,8 @@ var luxon = (function (exports) {
 
   function stripInsensitivities(s) {
     return s.replace(/\./g, "") // ignore dots that were made optional
-    .replace(spaceOrNBSPRegExp, " ") // interchange space and nbsp
-    .toLowerCase();
+      .replace(spaceOrNBSPRegExp, " ") // interchange space and nbsp
+      .toLowerCase();
   }
 
   function oneOf(strings, startIndex) {
@@ -5144,7 +5189,7 @@ var luxon = (function (exports) {
       regex: regex,
       deser: function deser(_ref3) {
         var h = _ref3[1],
-            m = _ref3[2];
+          m = _ref3[2];
         return signedOffset(h, m);
       },
       groups: groups
@@ -5167,186 +5212,186 @@ var luxon = (function (exports) {
 
   function unitForToken(token, loc) {
     var one = digitRegex(loc),
-        two = digitRegex(loc, "{2}"),
-        three = digitRegex(loc, "{3}"),
-        four = digitRegex(loc, "{4}"),
-        six = digitRegex(loc, "{6}"),
-        oneOrTwo = digitRegex(loc, "{1,2}"),
-        oneToThree = digitRegex(loc, "{1,3}"),
-        oneToSix = digitRegex(loc, "{1,6}"),
-        oneToNine = digitRegex(loc, "{1,9}"),
-        twoToFour = digitRegex(loc, "{2,4}"),
-        fourToSix = digitRegex(loc, "{4,6}"),
-        literal = function literal(t) {
-      return {
-        regex: RegExp(escapeToken(t.val)),
-        deser: function deser(_ref5) {
-          var s = _ref5[0];
-          return s;
-        },
-        literal: true
-      };
-    },
-        unitate = function unitate(t) {
-      if (token.literal) {
-        return literal(t);
-      }
-
-      switch (t.val) {
-        // era
-        case "G":
-          return oneOf(loc.eras("short", false), 0);
-
-        case "GG":
-          return oneOf(loc.eras("long", false), 0);
-        // years
-
-        case "y":
-          return intUnit(oneToSix);
-
-        case "yy":
-          return intUnit(twoToFour, untruncateYear);
-
-        case "yyyy":
-          return intUnit(four);
-
-        case "yyyyy":
-          return intUnit(fourToSix);
-
-        case "yyyyyy":
-          return intUnit(six);
-        // months
-
-        case "M":
-          return intUnit(oneOrTwo);
-
-        case "MM":
-          return intUnit(two);
-
-        case "MMM":
-          return oneOf(loc.months("short", true, false), 1);
-
-        case "MMMM":
-          return oneOf(loc.months("long", true, false), 1);
-
-        case "L":
-          return intUnit(oneOrTwo);
-
-        case "LL":
-          return intUnit(two);
-
-        case "LLL":
-          return oneOf(loc.months("short", false, false), 1);
-
-        case "LLLL":
-          return oneOf(loc.months("long", false, false), 1);
-        // dates
-
-        case "d":
-          return intUnit(oneOrTwo);
-
-        case "dd":
-          return intUnit(two);
-        // ordinals
-
-        case "o":
-          return intUnit(oneToThree);
-
-        case "ooo":
-          return intUnit(three);
-        // time
-
-        case "HH":
-          return intUnit(two);
-
-        case "H":
-          return intUnit(oneOrTwo);
-
-        case "hh":
-          return intUnit(two);
-
-        case "h":
-          return intUnit(oneOrTwo);
-
-        case "mm":
-          return intUnit(two);
-
-        case "m":
-          return intUnit(oneOrTwo);
-
-        case "q":
-          return intUnit(oneOrTwo);
-
-        case "qq":
-          return intUnit(two);
-
-        case "s":
-          return intUnit(oneOrTwo);
-
-        case "ss":
-          return intUnit(two);
-
-        case "S":
-          return intUnit(oneToThree);
-
-        case "SSS":
-          return intUnit(three);
-
-        case "u":
-          return simple(oneToNine);
-        // meridiem
-
-        case "a":
-          return oneOf(loc.meridiems(), 0);
-        // weekYear (k)
-
-        case "kkkk":
-          return intUnit(four);
-
-        case "kk":
-          return intUnit(twoToFour, untruncateYear);
-        // weekNumber (W)
-
-        case "W":
-          return intUnit(oneOrTwo);
-
-        case "WW":
-          return intUnit(two);
-        // weekdays
-
-        case "E":
-        case "c":
-          return intUnit(one);
-
-        case "EEE":
-          return oneOf(loc.weekdays("short", false, false), 1);
-
-        case "EEEE":
-          return oneOf(loc.weekdays("long", false, false), 1);
-
-        case "ccc":
-          return oneOf(loc.weekdays("short", true, false), 1);
-
-        case "cccc":
-          return oneOf(loc.weekdays("long", true, false), 1);
-        // offset/zone
-
-        case "Z":
-        case "ZZ":
-          return offset(new RegExp("([+-]" + oneOrTwo.source + ")(?::(" + two.source + "))?"), 2);
-
-        case "ZZZ":
-          return offset(new RegExp("([+-]" + oneOrTwo.source + ")(" + two.source + ")?"), 2);
-        // we don't support ZZZZ (PST) or ZZZZZ (Pacific Standard Time) in parsing
-        // because we don't have any way to figure out what they are
-
-        case "z":
-          return simple(/[a-z_+-/]{1,256}?/i);
-
-        default:
+      two = digitRegex(loc, "{2}"),
+      three = digitRegex(loc, "{3}"),
+      four = digitRegex(loc, "{4}"),
+      six = digitRegex(loc, "{6}"),
+      oneOrTwo = digitRegex(loc, "{1,2}"),
+      oneToThree = digitRegex(loc, "{1,3}"),
+      oneToSix = digitRegex(loc, "{1,6}"),
+      oneToNine = digitRegex(loc, "{1,9}"),
+      twoToFour = digitRegex(loc, "{2,4}"),
+      fourToSix = digitRegex(loc, "{4,6}"),
+      literal = function literal(t) {
+        return {
+          regex: RegExp(escapeToken(t.val)),
+          deser: function deser(_ref5) {
+            var s = _ref5[0];
+            return s;
+          },
+          literal: true
+        };
+      },
+      unitate = function unitate(t) {
+        if (token.literal) {
           return literal(t);
-      }
-    };
+        }
+
+        switch (t.val) {
+          // era
+          case "G":
+            return oneOf(loc.eras("short", false), 0);
+
+          case "GG":
+            return oneOf(loc.eras("long", false), 0);
+            // years
+
+          case "y":
+            return intUnit(oneToSix);
+
+          case "yy":
+            return intUnit(twoToFour, untruncateYear);
+
+          case "yyyy":
+            return intUnit(four);
+
+          case "yyyyy":
+            return intUnit(fourToSix);
+
+          case "yyyyyy":
+            return intUnit(six);
+            // months
+
+          case "M":
+            return intUnit(oneOrTwo);
+
+          case "MM":
+            return intUnit(two);
+
+          case "MMM":
+            return oneOf(loc.months("short", true, false), 1);
+
+          case "MMMM":
+            return oneOf(loc.months("long", true, false), 1);
+
+          case "L":
+            return intUnit(oneOrTwo);
+
+          case "LL":
+            return intUnit(two);
+
+          case "LLL":
+            return oneOf(loc.months("short", false, false), 1);
+
+          case "LLLL":
+            return oneOf(loc.months("long", false, false), 1);
+            // dates
+
+          case "d":
+            return intUnit(oneOrTwo);
+
+          case "dd":
+            return intUnit(two);
+            // ordinals
+
+          case "o":
+            return intUnit(oneToThree);
+
+          case "ooo":
+            return intUnit(three);
+            // time
+
+          case "HH":
+            return intUnit(two);
+
+          case "H":
+            return intUnit(oneOrTwo);
+
+          case "hh":
+            return intUnit(two);
+
+          case "h":
+            return intUnit(oneOrTwo);
+
+          case "mm":
+            return intUnit(two);
+
+          case "m":
+            return intUnit(oneOrTwo);
+
+          case "q":
+            return intUnit(oneOrTwo);
+
+          case "qq":
+            return intUnit(two);
+
+          case "s":
+            return intUnit(oneOrTwo);
+
+          case "ss":
+            return intUnit(two);
+
+          case "S":
+            return intUnit(oneToThree);
+
+          case "SSS":
+            return intUnit(three);
+
+          case "u":
+            return simple(oneToNine);
+            // meridiem
+
+          case "a":
+            return oneOf(loc.meridiems(), 0);
+            // weekYear (k)
+
+          case "kkkk":
+            return intUnit(four);
+
+          case "kk":
+            return intUnit(twoToFour, untruncateYear);
+            // weekNumber (W)
+
+          case "W":
+            return intUnit(oneOrTwo);
+
+          case "WW":
+            return intUnit(two);
+            // weekdays
+
+          case "E":
+          case "c":
+            return intUnit(one);
+
+          case "EEE":
+            return oneOf(loc.weekdays("short", false, false), 1);
+
+          case "EEEE":
+            return oneOf(loc.weekdays("long", false, false), 1);
+
+          case "ccc":
+            return oneOf(loc.weekdays("short", true, false), 1);
+
+          case "cccc":
+            return oneOf(loc.weekdays("long", true, false), 1);
+            // offset/zone
+
+          case "Z":
+          case "ZZ":
+            return offset(new RegExp("([+-]" + oneOrTwo.source + ")(?::(" + two.source + "))?"), 2);
+
+          case "ZZZ":
+            return offset(new RegExp("([+-]" + oneOrTwo.source + ")(" + two.source + ")?"), 2);
+            // we don't support ZZZZ (PST) or ZZZZZ (Pacific Standard Time) in parsing
+            // because we don't have any way to figure out what they are
+
+          case "z":
+            return simple(/[a-z_+-/]{1,256}?/i);
+
+          default:
+            return literal(t);
+        }
+      };
 
     var unit = unitate(token) || {
       invalidReason: MISSING_FTP
@@ -5392,7 +5437,7 @@ var luxon = (function (exports) {
 
   function tokenForPart(part, locale, formatOpts) {
     var type = part.type,
-        value = part.value;
+      value = part.value;
 
     if (type === "literal") {
       return {
@@ -5437,7 +5482,7 @@ var luxon = (function (exports) {
       for (var i in handlers) {
         if (hasOwnProperty(handlers, i)) {
           var h = handlers[i],
-              groups = h.groups ? h.groups + 1 : 1;
+            groups = h.groups ? h.groups + 1 : 1;
 
           if (!h.literal && h.token) {
             all[h.token.val[0]] = h.deser(matches.slice(matchIndex, matchIndex + groups));
@@ -5590,12 +5635,12 @@ var luxon = (function (exports) {
 
   function explainFromTokens(locale, input, format) {
     var tokens = expandMacroTokens(Formatter.parseFormat(format), locale),
-        units = tokens.map(function (t) {
-      return unitForToken(t, locale);
-    }),
-        disqualifyingUnit = units.find(function (t) {
-      return t.invalidReason;
-    });
+      units = tokens.map(function (t) {
+        return unitForToken(t, locale);
+      }),
+      disqualifyingUnit = units.find(function (t) {
+        return t.invalidReason;
+      });
 
     if (disqualifyingUnit) {
       return {
@@ -5605,15 +5650,15 @@ var luxon = (function (exports) {
       };
     } else {
       var _buildRegex = buildRegex(units),
-          regexString = _buildRegex[0],
-          handlers = _buildRegex[1],
-          regex = RegExp(regexString, "i"),
-          _match = match(input, regex, handlers),
-          rawMatches = _match[0],
-          matches = _match[1],
-          _ref6 = matches ? dateTimeFromMatches(matches) : [null, null],
-          result = _ref6[0],
-          zone = _ref6[1];
+        regexString = _buildRegex[0],
+        handlers = _buildRegex[1],
+        regex = RegExp(regexString, "i"),
+        _match = match(input, regex, handlers),
+        rawMatches = _match[0],
+        matches = _match[1],
+        _ref6 = matches ? dateTimeFromMatches(matches) : [null, null],
+        result = _ref6[0],
+        zone = _ref6[1];
 
       if (hasOwnProperty(matches, "a") && hasOwnProperty(matches, "H")) {
         throw new ConflictingSpecificationError("Can't include meridiem when specifying 24-hour format");
@@ -5630,17 +5675,18 @@ var luxon = (function (exports) {
       };
     }
   }
+
   function parseFromTokens(locale, input, format) {
     var _explainFromTokens = explainFromTokens(locale, input, format),
-        result = _explainFromTokens.result,
-        zone = _explainFromTokens.zone,
-        invalidReason = _explainFromTokens.invalidReason;
+      result = _explainFromTokens.result,
+      zone = _explainFromTokens.zone,
+      invalidReason = _explainFromTokens.invalidReason;
 
     return [result, zone, invalidReason];
   }
 
   var nonLeapLadder = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334],
-      leapLadder = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
+    leapLadder = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
 
   function unitOutOfRange(unit, value) {
     return new Invalid("unit out of range", "you specified " + value + " (of type " + typeof value + ") as a " + unit + ", which is invalid");
@@ -5657,10 +5703,10 @@ var luxon = (function (exports) {
 
   function uncomputeOrdinal(year, ordinal) {
     var table = isLeapYear(year) ? leapLadder : nonLeapLadder,
-        month0 = table.findIndex(function (i) {
-      return i < ordinal;
-    }),
-        day = ordinal - table[month0];
+      month0 = table.findIndex(function (i) {
+        return i < ordinal;
+      }),
+      day = ordinal - table[month0];
     return {
       month: month0 + 1,
       day: day
@@ -5673,12 +5719,12 @@ var luxon = (function (exports) {
 
   function gregorianToWeek(gregObj) {
     var year = gregObj.year,
-        month = gregObj.month,
-        day = gregObj.day,
-        ordinal = computeOrdinal(year, month, day),
-        weekday = dayOfWeek(year, month, day);
+      month = gregObj.month,
+      day = gregObj.day,
+      ordinal = computeOrdinal(year, month, day),
+      weekday = dayOfWeek(year, month, day);
     var weekNumber = Math.floor((ordinal - weekday + 10) / 7),
-        weekYear;
+      weekYear;
 
     if (weekNumber < 1) {
       weekYear = year - 1;
@@ -5696,14 +5742,15 @@ var luxon = (function (exports) {
       weekday: weekday
     }, timeObject(gregObj));
   }
+
   function weekToGregorian(weekData) {
     var weekYear = weekData.weekYear,
-        weekNumber = weekData.weekNumber,
-        weekday = weekData.weekday,
-        weekdayOfJan4 = dayOfWeek(weekYear, 1, 4),
-        yearInDays = daysInYear(weekYear);
+      weekNumber = weekData.weekNumber,
+      weekday = weekData.weekday,
+      weekdayOfJan4 = dayOfWeek(weekYear, 1, 4),
+      yearInDays = daysInYear(weekYear);
     var ordinal = weekNumber * 7 + weekday - weekdayOfJan4 - 3,
-        year;
+      year;
 
     if (ordinal < 1) {
       year = weekYear - 1;
@@ -5716,8 +5763,8 @@ var luxon = (function (exports) {
     }
 
     var _uncomputeOrdinal = uncomputeOrdinal(year, ordinal),
-        month = _uncomputeOrdinal.month,
-        day = _uncomputeOrdinal.day;
+      month = _uncomputeOrdinal.month,
+      day = _uncomputeOrdinal.day;
 
     return _extends({
       year: year,
@@ -5725,23 +5772,25 @@ var luxon = (function (exports) {
       day: day
     }, timeObject(weekData));
   }
+
   function gregorianToOrdinal(gregData) {
     var year = gregData.year,
-        month = gregData.month,
-        day = gregData.day;
+      month = gregData.month,
+      day = gregData.day;
     var ordinal = computeOrdinal(year, month, day);
     return _extends({
       year: year,
       ordinal: ordinal
     }, timeObject(gregData));
   }
+
   function ordinalToGregorian(ordinalData) {
     var year = ordinalData.year,
-        ordinal = ordinalData.ordinal;
+      ordinal = ordinalData.ordinal;
 
     var _uncomputeOrdinal2 = uncomputeOrdinal(year, ordinal),
-        month = _uncomputeOrdinal2.month,
-        day = _uncomputeOrdinal2.day;
+      month = _uncomputeOrdinal2.month,
+      day = _uncomputeOrdinal2.day;
 
     return _extends({
       year: year,
@@ -5749,10 +5798,11 @@ var luxon = (function (exports) {
       day: day
     }, timeObject(ordinalData));
   }
+
   function hasInvalidWeekData(obj) {
     var validYear = isInteger(obj.weekYear),
-        validWeek = integerBetween(obj.weekNumber, 1, weeksInWeekYear(obj.weekYear)),
-        validWeekday = integerBetween(obj.weekday, 1, 7);
+      validWeek = integerBetween(obj.weekNumber, 1, weeksInWeekYear(obj.weekYear)),
+      validWeekday = integerBetween(obj.weekday, 1, 7);
 
     if (!validYear) {
       return unitOutOfRange("weekYear", obj.weekYear);
@@ -5762,9 +5812,10 @@ var luxon = (function (exports) {
       return unitOutOfRange("weekday", obj.weekday);
     } else return false;
   }
+
   function hasInvalidOrdinalData(obj) {
     var validYear = isInteger(obj.year),
-        validOrdinal = integerBetween(obj.ordinal, 1, daysInYear(obj.year));
+      validOrdinal = integerBetween(obj.ordinal, 1, daysInYear(obj.year));
 
     if (!validYear) {
       return unitOutOfRange("year", obj.year);
@@ -5772,10 +5823,11 @@ var luxon = (function (exports) {
       return unitOutOfRange("ordinal", obj.ordinal);
     } else return false;
   }
+
   function hasInvalidGregorianData(obj) {
     var validYear = isInteger(obj.year),
-        validMonth = integerBetween(obj.month, 1, 12),
-        validDay = integerBetween(obj.day, 1, daysInMonth(obj.year, obj.month));
+      validMonth = integerBetween(obj.month, 1, 12),
+      validDay = integerBetween(obj.day, 1, daysInMonth(obj.year, obj.month));
 
     if (!validYear) {
       return unitOutOfRange("year", obj.year);
@@ -5785,15 +5837,16 @@ var luxon = (function (exports) {
       return unitOutOfRange("day", obj.day);
     } else return false;
   }
+
   function hasInvalidTimeData(obj) {
     var hour = obj.hour,
-        minute = obj.minute,
-        second = obj.second,
-        millisecond = obj.millisecond;
+      minute = obj.minute,
+      second = obj.second,
+      millisecond = obj.millisecond;
     var validHour = integerBetween(hour, 0, 23) || hour === 24 && minute === 0 && second === 0 && millisecond === 0,
-        validMinute = integerBetween(minute, 0, 59),
-        validSecond = integerBetween(second, 0, 59),
-        validMillisecond = integerBetween(millisecond, 0, 999);
+      validMinute = integerBetween(minute, 0, 59),
+      validSecond = integerBetween(second, 0, 59),
+      validMillisecond = integerBetween(millisecond, 0, 999);
 
     if (!validHour) {
       return unitOutOfRange("hour", hour);
@@ -5886,29 +5939,29 @@ var luxon = (function (exports) {
 
   function adjustTime(inst, dur) {
     var oPre = inst.o,
-        year = inst.c.year + Math.trunc(dur.years),
-        month = inst.c.month + Math.trunc(dur.months) + Math.trunc(dur.quarters) * 3,
-        c = _extends({}, inst.c, {
-      year: year,
-      month: month,
-      day: Math.min(inst.c.day, daysInMonth(year, month)) + Math.trunc(dur.days) + Math.trunc(dur.weeks) * 7
-    }),
-        millisToAdd = Duration.fromObject({
-      years: dur.years - Math.trunc(dur.years),
-      quarters: dur.quarters - Math.trunc(dur.quarters),
-      months: dur.months - Math.trunc(dur.months),
-      weeks: dur.weeks - Math.trunc(dur.weeks),
-      days: dur.days - Math.trunc(dur.days),
-      hours: dur.hours,
-      minutes: dur.minutes,
-      seconds: dur.seconds,
-      milliseconds: dur.milliseconds
-    }).as("milliseconds"),
-        localTS = objToLocalTS(c);
+      year = inst.c.year + Math.trunc(dur.years),
+      month = inst.c.month + Math.trunc(dur.months) + Math.trunc(dur.quarters) * 3,
+      c = _extends({}, inst.c, {
+        year: year,
+        month: month,
+        day: Math.min(inst.c.day, daysInMonth(year, month)) + Math.trunc(dur.days) + Math.trunc(dur.weeks) * 7
+      }),
+      millisToAdd = Duration.fromObject({
+        years: dur.years - Math.trunc(dur.years),
+        quarters: dur.quarters - Math.trunc(dur.quarters),
+        months: dur.months - Math.trunc(dur.months),
+        weeks: dur.weeks - Math.trunc(dur.weeks),
+        days: dur.days - Math.trunc(dur.days),
+        hours: dur.hours,
+        minutes: dur.minutes,
+        seconds: dur.seconds,
+        milliseconds: dur.milliseconds
+      }).as("milliseconds"),
+      localTS = objToLocalTS(c);
 
     var _fixOffset = fixOffset(localTS, oPre, inst.zone),
-        ts = _fixOffset[0],
-        o = _fixOffset[1];
+      ts = _fixOffset[0],
+      o = _fixOffset[1];
 
     if (millisToAdd !== 0) {
       ts += millisToAdd; // that could have changed the offset by going over a DST, but we want to keep the ts the same
@@ -5926,15 +5979,15 @@ var luxon = (function (exports) {
 
   function parseDataToDateTime(parsed, parsedZone, opts, format, text) {
     var setZone = opts.setZone,
-        zone = opts.zone;
+      zone = opts.zone;
 
     if (parsed && Object.keys(parsed).length !== 0) {
       var interpretationZone = parsedZone || zone,
-          inst = DateTime.fromObject(parsed, _extends({}, opts, {
-        zone: interpretationZone,
-        // setZone is a valid option in the calling methods, but not in fromObject
-        setZone: undefined
-      }));
+        inst = DateTime.fromObject(parsed, _extends({}, opts, {
+          zone: interpretationZone,
+          // setZone is a valid option in the calling methods, but not in fromObject
+          setZone: undefined
+        }));
       return setZone ? inst : inst.setZone(zone);
     } else {
       return DateTime.invalid(new Invalid("unparsable", "the input \"" + text + "\" can't be parsed as " + format));
@@ -5958,18 +6011,18 @@ var luxon = (function (exports) {
 
   function toTechTimeFormat(dt, _ref) {
     var _ref$suppressSeconds = _ref.suppressSeconds,
-        suppressSeconds = _ref$suppressSeconds === void 0 ? false : _ref$suppressSeconds,
-        _ref$suppressMillisec = _ref.suppressMilliseconds,
-        suppressMilliseconds = _ref$suppressMillisec === void 0 ? false : _ref$suppressMillisec,
-        includeOffset = _ref.includeOffset,
-        _ref$includePrefix = _ref.includePrefix,
-        includePrefix = _ref$includePrefix === void 0 ? false : _ref$includePrefix,
-        _ref$includeZone = _ref.includeZone,
-        includeZone = _ref$includeZone === void 0 ? false : _ref$includeZone,
-        _ref$spaceZone = _ref.spaceZone,
-        spaceZone = _ref$spaceZone === void 0 ? false : _ref$spaceZone,
-        _ref$format = _ref.format,
-        format = _ref$format === void 0 ? "extended" : _ref$format;
+      suppressSeconds = _ref$suppressSeconds === void 0 ? false : _ref$suppressSeconds,
+      _ref$suppressMillisec = _ref.suppressMilliseconds,
+      suppressMilliseconds = _ref$suppressMillisec === void 0 ? false : _ref$suppressMillisec,
+      includeOffset = _ref.includeOffset,
+      _ref$includePrefix = _ref.includePrefix,
+      includePrefix = _ref$includePrefix === void 0 ? false : _ref$includePrefix,
+      _ref$includeZone = _ref.includeZone,
+      includeZone = _ref$includeZone === void 0 ? false : _ref$includeZone,
+      _ref$spaceZone = _ref.spaceZone,
+      spaceZone = _ref$spaceZone === void 0 ? false : _ref$spaceZone,
+      _ref$format = _ref.format,
+      format = _ref$format === void 0 ? "extended" : _ref$format;
     var fmt = format === "basic" ? "HHmm" : "HH:mm";
 
     if (!suppressSeconds || dt.second !== 0 || dt.millisecond !== 0) {
@@ -6001,32 +6054,32 @@ var luxon = (function (exports) {
 
 
   var defaultUnitValues = {
-    month: 1,
-    day: 1,
-    hour: 0,
-    minute: 0,
-    second: 0,
-    millisecond: 0
-  },
-      defaultWeekUnitValues = {
-    weekNumber: 1,
-    weekday: 1,
-    hour: 0,
-    minute: 0,
-    second: 0,
-    millisecond: 0
-  },
-      defaultOrdinalUnitValues = {
-    ordinal: 1,
-    hour: 0,
-    minute: 0,
-    second: 0,
-    millisecond: 0
-  }; // Units in the supported calendars, sorted by bigness
+      month: 1,
+      day: 1,
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    },
+    defaultWeekUnitValues = {
+      weekNumber: 1,
+      weekday: 1,
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    },
+    defaultOrdinalUnitValues = {
+      ordinal: 1,
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    }; // Units in the supported calendars, sorted by bigness
 
   var orderedUnits = ["year", "month", "day", "hour", "minute", "second", "millisecond"],
-      orderedWeekUnits = ["weekYear", "weekNumber", "weekday", "hour", "minute", "second", "millisecond"],
-      orderedOrdinalUnits = ["year", "ordinal", "hour", "minute", "second", "millisecond"]; // standardize case and plurality in units
+    orderedWeekUnits = ["weekYear", "weekNumber", "weekday", "hour", "minute", "second", "millisecond"],
+    orderedOrdinalUnits = ["year", "ordinal", "hour", "minute", "second", "millisecond"]; // standardize case and plurality in units
 
   function normalizeUnit(unit) {
     var normalized = {
@@ -6054,7 +6107,7 @@ var luxon = (function (exports) {
       weekyear: "weekYear",
       weekyears: "weekYear",
       ordinal: "ordinal"
-    }[unit.toLowerCase()];
+    } [unit.toLowerCase()];
     if (!normalized) throw new InvalidUnitError(unit);
     return normalized;
   } // this is a dumbed down version of fromObject() that runs about 60% faster
@@ -6067,8 +6120,8 @@ var luxon = (function (exports) {
 
   function quickDT(obj, opts) {
     var zone = normalizeZone(opts.zone, Settings.defaultZone),
-        loc = Locale.fromObject(opts),
-        tsNow = Settings.now();
+      loc = Locale.fromObject(opts),
+      tsNow = Settings.now();
     var ts, o; // assume we have the higher-order units
 
     if (!isUndefined(obj.year)) {
@@ -6106,20 +6159,20 @@ var luxon = (function (exports) {
 
   function diffRelative(start, end, opts) {
     var round = isUndefined(opts.round) ? true : opts.round,
-        format = function format(c, unit) {
-      c = roundTo(c, round || opts.calendary ? 0 : 2, true);
-      var formatter = end.loc.clone(opts).relFormatter(opts);
-      return formatter.format(c, unit);
-    },
-        differ = function differ(unit) {
-      if (opts.calendary) {
-        if (!end.hasSame(start, unit)) {
-          return end.startOf(unit).diff(start.startOf(unit), unit).get(unit);
-        } else return 0;
-      } else {
-        return end.diff(start, unit).get(unit);
-      }
-    };
+      format = function format(c, unit) {
+        c = roundTo(c, round || opts.calendary ? 0 : 2, true);
+        var formatter = end.loc.clone(opts).relFormatter(opts);
+        return formatter.format(c, unit);
+      },
+      differ = function differ(unit) {
+        if (opts.calendary) {
+          if (!end.hasSame(start, unit)) {
+            return end.startOf(unit).diff(start.startOf(unit), unit).get(unit);
+          } else return 0;
+        } else {
+          return end.diff(start, unit).get(unit);
+        }
+      };
 
     if (opts.unit) {
       return format(differ(opts.unit), opts.unit);
@@ -6139,7 +6192,7 @@ var luxon = (function (exports) {
 
   function lastOpts(argList) {
     var opts = {},
-        args;
+      args;
 
     if (argList.length > 0 && typeof argList[argList.length - 1] === "object") {
       opts = argList[argList.length - 1];
@@ -6172,7 +6225,7 @@ var luxon = (function (exports) {
    */
 
 
-  var DateTime = /*#__PURE__*/function () {
+  var DateTime = /*#__PURE__*/ function () {
     /**
      * @access private
      */
@@ -6185,7 +6238,7 @@ var luxon = (function (exports) {
 
       this.ts = isUndefined(config.ts) ? Settings.now() : config.ts;
       var c = null,
-          o = null;
+        o = null;
 
       if (!invalid) {
         var unchanged = config.old && config.old.ts === this.ts && config.old.zone.equals(zone);
@@ -6277,15 +6330,15 @@ var luxon = (function (exports) {
 
     DateTime.local = function local() {
       var _lastOpts = lastOpts(arguments),
-          opts = _lastOpts[0],
-          args = _lastOpts[1],
-          year = args[0],
-          month = args[1],
-          day = args[2],
-          hour = args[3],
-          minute = args[4],
-          second = args[5],
-          millisecond = args[6];
+        opts = _lastOpts[0],
+        args = _lastOpts[1],
+        year = args[0],
+        month = args[1],
+        day = args[2],
+        hour = args[3],
+        minute = args[4],
+        second = args[5],
+        millisecond = args[6];
 
       return quickDT({
         year: year,
@@ -6325,15 +6378,15 @@ var luxon = (function (exports) {
 
     DateTime.utc = function utc() {
       var _lastOpts2 = lastOpts(arguments),
-          opts = _lastOpts2[0],
-          args = _lastOpts2[1],
-          year = args[0],
-          month = args[1],
-          day = args[2],
-          hour = args[3],
-          minute = args[4],
-          second = args[5],
-          millisecond = args[6];
+        opts = _lastOpts2[0],
+        args = _lastOpts2[1],
+        year = args[0],
+        month = args[1],
+        day = args[2],
+        hour = args[3],
+        minute = args[4],
+        second = args[5],
+        millisecond = args[6];
 
       opts.zone = FixedOffsetZone.utcInstance;
       return quickDT({
@@ -6478,14 +6531,14 @@ var luxon = (function (exports) {
       }
 
       var tsNow = Settings.now(),
-          offsetProvis = zoneToUse.offset(tsNow),
-          normalized = normalizeObject(obj, normalizeUnit),
-          containsOrdinal = !isUndefined(normalized.ordinal),
-          containsGregorYear = !isUndefined(normalized.year),
-          containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day),
-          containsGregor = containsGregorYear || containsGregorMD,
-          definiteWeekDef = normalized.weekYear || normalized.weekNumber,
-          loc = Locale.fromObject(opts); // cases:
+        offsetProvis = zoneToUse.offset(tsNow),
+        normalized = normalizeObject(obj, normalizeUnit),
+        containsOrdinal = !isUndefined(normalized.ordinal),
+        containsGregorYear = !isUndefined(normalized.year),
+        containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day),
+        containsGregor = containsGregorYear || containsGregorMD,
+        definiteWeekDef = normalized.weekYear || normalized.weekNumber,
+        loc = Locale.fromObject(opts); // cases:
       // just a weekday -> this week's instance of that weekday, no worries
       // (gregorian data or ordinal) + (weekYear or weekNumber) -> error
       // (gregorian month or day) + ordinal -> error
@@ -6502,8 +6555,8 @@ var luxon = (function (exports) {
       var useWeekData = definiteWeekDef || normalized.weekday && !containsGregor; // configure ourselves to deal with gregorian dates or week stuff
 
       var units,
-          defaultValues,
-          objNow = tsToObj(tsNow, offsetProvis);
+        defaultValues,
+        objNow = tsToObj(tsNow, offsetProvis);
 
       if (useWeekData) {
         units = orderedWeekUnits;
@@ -6536,7 +6589,7 @@ var luxon = (function (exports) {
 
 
       var higherOrderInvalid = useWeekData ? hasInvalidWeekData(normalized) : containsOrdinal ? hasInvalidOrdinalData(normalized) : hasInvalidGregorianData(normalized),
-          invalid = higherOrderInvalid || hasInvalidTimeData(normalized);
+        invalid = higherOrderInvalid || hasInvalidTimeData(normalized);
 
       if (invalid) {
         return DateTime.invalid(invalid);
@@ -6544,15 +6597,15 @@ var luxon = (function (exports) {
 
 
       var gregorian = useWeekData ? weekToGregorian(normalized) : containsOrdinal ? ordinalToGregorian(normalized) : normalized,
-          _objToTS2 = objToTS(gregorian, offsetProvis, zoneToUse),
-          tsFinal = _objToTS2[0],
-          offsetFinal = _objToTS2[1],
-          inst = new DateTime({
-        ts: tsFinal,
-        zone: zoneToUse,
-        o: offsetFinal,
-        loc: loc
-      }); // gregorian data + weekday serves only to validate
+        _objToTS2 = objToTS(gregorian, offsetProvis, zoneToUse),
+        tsFinal = _objToTS2[0],
+        offsetFinal = _objToTS2[1],
+        inst = new DateTime({
+          ts: tsFinal,
+          zone: zoneToUse,
+          o: offsetFinal,
+          loc: loc
+        }); // gregorian data + weekday serves only to validate
 
 
       if (normalized.weekday && containsGregor && obj.weekday !== inst.weekday) {
@@ -6585,8 +6638,8 @@ var luxon = (function (exports) {
       }
 
       var _parseISODate = parseISODate(text),
-          vals = _parseISODate[0],
-          parsedZone = _parseISODate[1];
+        vals = _parseISODate[0],
+        parsedZone = _parseISODate[1];
 
       return parseDataToDateTime(vals, parsedZone, opts, "ISO 8601", text);
     }
@@ -6612,8 +6665,8 @@ var luxon = (function (exports) {
       }
 
       var _parseRFC2822Date = parseRFC2822Date(text),
-          vals = _parseRFC2822Date[0],
-          parsedZone = _parseRFC2822Date[1];
+        vals = _parseRFC2822Date[0],
+        parsedZone = _parseRFC2822Date[1];
 
       return parseDataToDateTime(vals, parsedZone, opts, "RFC 2822", text);
     }
@@ -6640,8 +6693,8 @@ var luxon = (function (exports) {
       }
 
       var _parseHTTPDate = parseHTTPDate(text),
-          vals = _parseHTTPDate[0],
-          parsedZone = _parseHTTPDate[1];
+        vals = _parseHTTPDate[0],
+        parsedZone = _parseHTTPDate[1];
 
       return parseDataToDateTime(vals, parsedZone, opts, "HTTP", opts);
     }
@@ -6670,19 +6723,19 @@ var luxon = (function (exports) {
       }
 
       var _opts = opts,
-          _opts$locale = _opts.locale,
-          locale = _opts$locale === void 0 ? null : _opts$locale,
-          _opts$numberingSystem = _opts.numberingSystem,
-          numberingSystem = _opts$numberingSystem === void 0 ? null : _opts$numberingSystem,
-          localeToUse = Locale.fromOpts({
-        locale: locale,
-        numberingSystem: numberingSystem,
-        defaultToEN: true
-      }),
-          _parseFromTokens = parseFromTokens(localeToUse, text, fmt),
-          vals = _parseFromTokens[0],
-          parsedZone = _parseFromTokens[1],
-          invalid = _parseFromTokens[2];
+        _opts$locale = _opts.locale,
+        locale = _opts$locale === void 0 ? null : _opts$locale,
+        _opts$numberingSystem = _opts.numberingSystem,
+        numberingSystem = _opts$numberingSystem === void 0 ? null : _opts$numberingSystem,
+        localeToUse = Locale.fromOpts({
+          locale: locale,
+          numberingSystem: numberingSystem,
+          defaultToEN: true
+        }),
+        _parseFromTokens = parseFromTokens(localeToUse, text, fmt),
+        vals = _parseFromTokens[0],
+        parsedZone = _parseFromTokens[1],
+        invalid = _parseFromTokens[2];
 
       if (invalid) {
         return DateTime.invalid(invalid);
@@ -6730,8 +6783,8 @@ var luxon = (function (exports) {
       }
 
       var _parseSQL = parseSQL(text),
-          vals = _parseSQL[0],
-          parsedZone = _parseSQL[1];
+        vals = _parseSQL[0],
+        parsedZone = _parseSQL[1];
 
       return parseDataToDateTime(vals, parsedZone, opts, "SQL", text);
     }
@@ -6807,9 +6860,9 @@ var luxon = (function (exports) {
       }
 
       var _Formatter$create$res = Formatter.create(this.loc.clone(opts), opts).resolvedOptions(this),
-          locale = _Formatter$create$res.locale,
-          numberingSystem = _Formatter$create$res.numberingSystem,
-          calendar = _Formatter$create$res.calendar;
+        locale = _Formatter$create$res.locale,
+        numberingSystem = _Formatter$create$res.numberingSystem,
+        calendar = _Formatter$create$res.calendar;
 
       return {
         locale: locale,
@@ -6863,10 +6916,10 @@ var luxon = (function (exports) {
 
     _proto.setZone = function setZone(zone, _temp) {
       var _ref3 = _temp === void 0 ? {} : _temp,
-          _ref3$keepLocalTime = _ref3.keepLocalTime,
-          keepLocalTime = _ref3$keepLocalTime === void 0 ? false : _ref3$keepLocalTime,
-          _ref3$keepCalendarTim = _ref3.keepCalendarTime,
-          keepCalendarTime = _ref3$keepCalendarTim === void 0 ? false : _ref3$keepCalendarTim;
+        _ref3$keepLocalTime = _ref3.keepLocalTime,
+        keepLocalTime = _ref3$keepLocalTime === void 0 ? false : _ref3$keepLocalTime,
+        _ref3$keepCalendarTim = _ref3.keepCalendarTime,
+        keepCalendarTime = _ref3$keepCalendarTim === void 0 ? false : _ref3$keepCalendarTim;
 
       zone = normalizeZone(zone, Settings.defaultZone);
 
@@ -6902,9 +6955,9 @@ var luxon = (function (exports) {
 
     _proto.reconfigure = function reconfigure(_temp2) {
       var _ref4 = _temp2 === void 0 ? {} : _temp2,
-          locale = _ref4.locale,
-          numberingSystem = _ref4.numberingSystem,
-          outputCalendar = _ref4.outputCalendar;
+        locale = _ref4.locale,
+        numberingSystem = _ref4.numberingSystem,
+        outputCalendar = _ref4.outputCalendar;
 
       var loc = this.loc.clone({
         locale: locale,
@@ -6943,12 +6996,12 @@ var luxon = (function (exports) {
     _proto.set = function set(values) {
       if (!this.isValid) return this;
       var normalized = normalizeObject(values, normalizeUnit),
-          settingWeekStuff = !isUndefined(normalized.weekYear) || !isUndefined(normalized.weekNumber) || !isUndefined(normalized.weekday),
-          containsOrdinal = !isUndefined(normalized.ordinal),
-          containsGregorYear = !isUndefined(normalized.year),
-          containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day),
-          containsGregor = containsGregorYear || containsGregorMD,
-          definiteWeekDef = normalized.weekYear || normalized.weekNumber;
+        settingWeekStuff = !isUndefined(normalized.weekYear) || !isUndefined(normalized.weekNumber) || !isUndefined(normalized.weekday),
+        containsOrdinal = !isUndefined(normalized.ordinal),
+        containsGregorYear = !isUndefined(normalized.year),
+        containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day),
+        containsGregor = containsGregorYear || containsGregorMD,
+        definiteWeekDef = normalized.weekYear || normalized.weekNumber;
 
       if ((containsGregor || containsOrdinal) && definiteWeekDef) {
         throw new ConflictingSpecificationError("Can't mix weekYear/weekNumber units with year/month/day or ordinals");
@@ -6974,8 +7027,8 @@ var luxon = (function (exports) {
       }
 
       var _objToTS4 = objToTS(mixed, this.o, this.zone),
-          ts = _objToTS4[0],
-          o = _objToTS4[1];
+        ts = _objToTS4[0],
+        o = _objToTS4[1];
 
       return clone(this, {
         ts: ts,
@@ -7030,35 +7083,35 @@ var luxon = (function (exports) {
     _proto.startOf = function startOf(unit) {
       if (!this.isValid) return this;
       var o = {},
-          normalizedUnit = Duration.normalizeUnit(unit);
+        normalizedUnit = Duration.normalizeUnit(unit);
 
       switch (normalizedUnit) {
         case "years":
           o.month = 1;
-        // falls through
+          // falls through
 
         case "quarters":
         case "months":
           o.day = 1;
-        // falls through
+          // falls through
 
         case "weeks":
         case "days":
           o.hour = 0;
-        // falls through
+          // falls through
 
         case "hours":
           o.minute = 0;
-        // falls through
+          // falls through
 
         case "minutes":
           o.second = 0;
-        // falls through
+          // falls through
 
         case "seconds":
           o.millisecond = 0;
           break;
-        // no default, invalid units throw in normalizeUnit()
+          // no default, invalid units throw in normalizeUnit()
       }
 
       if (normalizedUnit === "weeks") {
@@ -7203,8 +7256,8 @@ var luxon = (function (exports) {
 
     _proto.toISODate = function toISODate(_temp3) {
       var _ref5 = _temp3 === void 0 ? {} : _temp3,
-          _ref5$format = _ref5.format,
-          format = _ref5$format === void 0 ? "extended" : _ref5$format;
+        _ref5$format = _ref5.format,
+        format = _ref5$format === void 0 ? "extended" : _ref5$format;
 
       var fmt = format === "basic" ? "yyyyMMdd" : "yyyy-MM-dd";
 
@@ -7242,16 +7295,16 @@ var luxon = (function (exports) {
 
     _proto.toISOTime = function toISOTime(_temp4) {
       var _ref6 = _temp4 === void 0 ? {} : _temp4,
-          _ref6$suppressMillise = _ref6.suppressMilliseconds,
-          suppressMilliseconds = _ref6$suppressMillise === void 0 ? false : _ref6$suppressMillise,
-          _ref6$suppressSeconds = _ref6.suppressSeconds,
-          suppressSeconds = _ref6$suppressSeconds === void 0 ? false : _ref6$suppressSeconds,
-          _ref6$includeOffset = _ref6.includeOffset,
-          includeOffset = _ref6$includeOffset === void 0 ? true : _ref6$includeOffset,
-          _ref6$includePrefix = _ref6.includePrefix,
-          includePrefix = _ref6$includePrefix === void 0 ? false : _ref6$includePrefix,
-          _ref6$format = _ref6.format,
-          format = _ref6$format === void 0 ? "extended" : _ref6$format;
+        _ref6$suppressMillise = _ref6.suppressMilliseconds,
+        suppressMilliseconds = _ref6$suppressMillise === void 0 ? false : _ref6$suppressMillise,
+        _ref6$suppressSeconds = _ref6.suppressSeconds,
+        suppressSeconds = _ref6$suppressSeconds === void 0 ? false : _ref6$suppressSeconds,
+        _ref6$includeOffset = _ref6.includeOffset,
+        includeOffset = _ref6$includeOffset === void 0 ? true : _ref6$includeOffset,
+        _ref6$includePrefix = _ref6.includePrefix,
+        includePrefix = _ref6$includePrefix === void 0 ? false : _ref6$includePrefix,
+        _ref6$format = _ref6.format,
+        format = _ref6$format === void 0 ? "extended" : _ref6$format;
 
       return toTechTimeFormat(this, {
         suppressSeconds: suppressSeconds,
@@ -7310,10 +7363,10 @@ var luxon = (function (exports) {
 
     _proto.toSQLTime = function toSQLTime(_temp5) {
       var _ref7 = _temp5 === void 0 ? {} : _temp5,
-          _ref7$includeOffset = _ref7.includeOffset,
-          includeOffset = _ref7$includeOffset === void 0 ? true : _ref7$includeOffset,
-          _ref7$includeZone = _ref7.includeZone,
-          includeZone = _ref7$includeZone === void 0 ? false : _ref7$includeZone;
+        _ref7$includeOffset = _ref7.includeOffset,
+        includeOffset = _ref7$includeOffset === void 0 ? true : _ref7$includeOffset,
+        _ref7$includeZone = _ref7.includeZone,
+        includeZone = _ref7$includeZone === void 0 ? false : _ref7$includeZone;
 
       return toTechTimeFormat(this, {
         includeOffset: includeOffset,
@@ -7471,10 +7524,10 @@ var luxon = (function (exports) {
       }, opts);
 
       var units = maybeArray(unit).map(Duration.normalizeUnit),
-          otherIsLater = otherDateTime.valueOf() > this.valueOf(),
-          earlier = otherIsLater ? this : otherDateTime,
-          later = otherIsLater ? otherDateTime : this,
-          diffed = _diff(earlier, later, units, durOpts);
+        otherIsLater = otherDateTime.valueOf() > this.valueOf(),
+        earlier = otherIsLater ? this : otherDateTime,
+        later = otherIsLater ? otherDateTime : this,
+        diffed = _diff(earlier, later, units, durOpts);
 
       return otherIsLater ? diffed.negate() : diffed;
     }
@@ -7567,9 +7620,9 @@ var luxon = (function (exports) {
 
       if (!this.isValid) return null;
       var base = options.base || DateTime.fromObject({}, {
-        zone: this.zone
-      }),
-          padding = options.padding ? this < base ? -options.padding : options.padding : 0;
+          zone: this.zone
+        }),
+        padding = options.padding ? this < base ? -options.padding : options.padding : 0;
       var units = ["years", "months", "days", "hours", "minutes", "seconds"];
       var unit = options.unit;
 
@@ -7669,15 +7722,15 @@ var luxon = (function (exports) {
       }
 
       var _options = options,
-          _options$locale = _options.locale,
-          locale = _options$locale === void 0 ? null : _options$locale,
-          _options$numberingSys = _options.numberingSystem,
-          numberingSystem = _options$numberingSys === void 0 ? null : _options$numberingSys,
-          localeToUse = Locale.fromOpts({
-        locale: locale,
-        numberingSystem: numberingSystem,
-        defaultToEN: true
-      });
+        _options$locale = _options.locale,
+        locale = _options$locale === void 0 ? null : _options$locale,
+        _options$numberingSys = _options.numberingSystem,
+        numberingSystem = _options$numberingSys === void 0 ? null : _options$numberingSys,
+        localeToUse = Locale.fromOpts({
+          locale: locale,
+          numberingSystem: numberingSystem,
+          defaultToEN: true
+        });
       return explainFromTokens(localeToUse, text, fmt);
     }
     /**
@@ -8313,6 +8366,7 @@ var luxon = (function (exports) {
 
     return DateTime;
   }();
+
   function friendlyDateTime(dateTimeish) {
     if (DateTime.isDateTime(dateTimeish)) {
       return dateTimeish;
@@ -8339,50 +8393,45 @@ var luxon = (function (exports) {
   exports.VERSION = VERSION;
   exports.Zone = Zone;
 
-  Object.defineProperty(exports, '__esModule', { value: true });
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
 
-const currentTime = document.querySelector('.date');
-
-
-
-
+  const currentTime = document.querySelector('.date');
 
 
-function my_Clock() 
-  {
-  this.cur_date = new Date();
-  this.hours = this.cur_date.getHours();
-  this.minutes = this.cur_date.getMinutes();
-  this.seconds = this.cur_date.getSeconds();
+
+
+
+
+  function my_Clock() {
+    this.cur_date = new Date();
+    this.hours = this.cur_date.getHours();
+    this.minutes = this.cur_date.getMinutes();
+    this.seconds = this.cur_date.getSeconds();
   }
-my_Clock.prototype.run = function ()
-  {
-  setInterval(this.update.bind(this), 1000);
+  my_Clock.prototype.run = function () {
+    setInterval(this.update.bind(this), 1000);
   };
-my_Clock.prototype.update = function () 
-  {
-  this.updateTime(1);
-  currentTime.textContent = this.hours + ":" + this.minutes + ":" + this.seconds;
+  my_Clock.prototype.update = function () {
+    this.updateTime(1);
+    currentTime.textContent = this.hours + ":" + this.minutes + ":" + this.seconds;
   };
-my_Clock.prototype.updateTime = function (secs) 
-  {
-  this.seconds+= secs;
- if (this.seconds >= 60)
-  {
-  this.minutes++;
-  this.seconds= 0;
-  }
- if (this.minutes >= 60)
-  {
-  this.hours++;
-  this.minutes=0;
-  }
-if (this.hours >= 24)
-  {
-  this.hours = 0;
-  }
-};
-var clock = new my_Clock();
+  my_Clock.prototype.updateTime = function (secs) {
+    this.seconds += secs;
+    if (this.seconds >= 60) {
+      this.minutes++;
+      this.seconds = 0;
+    }
+    if (this.minutes >= 60) {
+      this.hours++;
+      this.minutes = 0;
+    }
+    if (this.hours >= 24) {
+      this.hours = 0;
+    }
+  };
+  var clock = new my_Clock();
   clock.run();
   return exports;
 
