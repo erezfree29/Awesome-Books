@@ -1,5 +1,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable class-methods-use-this */
+// var DateTime = luxon.DateTime;
 class Library {
   constructor(books) {
     this.books = books;
@@ -50,6 +51,14 @@ class Library {
         srow.appendChild(sdtd);
         srow.id = book.title;
         scontain.appendChild(srow);
+        const sform = document.querySelector('.my-form');
+        const saddHead = document.querySelector('.add_head');
+        const stable = document.querySelector('.table-container');
+        const scontact = document.querySelector('.contact_us');
+        sform.style.display = 'none';
+        saddHead.style.display = 'none';
+        stable.style.display = 'block';
+        scontact.style.display = 'none';
       }
 
       localStorage.setItem('savedArray', JSON.stringify(library.books));
@@ -95,19 +104,55 @@ class Library {
         deleteRow.parentNode.removeChild(deleteRow);
       }
     }
+  }
 
-    function showTime() {
-      const clock = document.getElementById('clock');
-      const dateclock = luxon.DateTime.now();
-      showTime.appendChild(clock);
-      clock.innerText = dateclock.toLocaleString(luxon.DateTime.DATETIME_MED);
-    }
+  myTime() {
+    const timer = document.getElementById('clock');
+    const datertimer = luxon.DateTime.now();
+    timer.innerText = datertimer.toFormat('MMMM dd yyyy, hh:mm:ss a');
+  }
+
+  startTimer() {
     setInterval(() => {
-      showTime();
+      this.myTime();
     }, 1000);
   }
-}
+};
 
 let library = new Library([]);
 library.addBook();
 library.showBooks();
+library.startTimer();
+
+function displayForm() {
+  const form = document.querySelector('.my-form');
+  const addHead = document.querySelector('.add_head');
+  const table = document.querySelector('.table-container');
+  const contact = document.querySelector('.contact_us');
+  form.style.display = 'block';
+  addHead.style.display = 'block';
+  table.style.display = 'none';
+  contact.style.display = 'none';
+}
+
+function displayBooks() {
+  const form = document.querySelector('.my-form');
+  const addHead = document.querySelector('.add_head');
+  const table = document.querySelector('.table-container');
+  const contact = document.querySelector('.contact_us');
+  form.style.display = 'none';
+  addHead.style.display = 'none';
+  table.style.display = 'block';
+  contact.style.display = 'none';
+}
+
+function displayContact() {
+  const form = document.querySelector('.my-form');
+  const addHead = document.querySelector('.add_head');
+  const table = document.querySelector('.table-container');
+  const contact = document.querySelector('.contact_us');
+  form.style.display = 'none';
+  addHead.style.display = 'none';
+  table.style.display = 'none';
+  contact.style.display = 'block';
+}

@@ -11,20 +11,22 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
 </head>
 
 <body>
   <nav>
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#contact_us">Contact</a></li>
-      <li><a href="#add_book">Add Book</a></li>
-      <li><a class="active" href="#list">List</a></li>
-    </ul>
+      <li class="logo">Awesome Books</li>
+      <li><a href="#" onclick="displayContact();">Contact</a></li>
+      <li><a href="#" onclick="displayForm();">Add Book</a></li>
+      <li><a class="active" href="#" onclick="displayBooks();">List</a></li>
   </nav>
   </div>
-  <div class="date" id="digital-clock"> </div>
-  <div class="date" id="clock"> </div>
+  <div class="date">
+    <!-- <div id="digital-clock"></div> -->
+    <div id="clock"> </div>
+  </div>
   <div class="container" id="list">
 
     <div class="table-container">
@@ -38,7 +40,6 @@
           </tr>
         </thead>
         <tbody>
-
         </tbody>
       </table>
     </div>
@@ -46,9 +47,9 @@
     <br>
     <div class="display">
       <br>
-      <h1>A new book</h1>
+      <h1 class="add_head">A new book</h1>
     </div>
-    <div class="my-form" id="add_book">
+    <div class="my-form id=" add_book">
       <form id="book-form">
         <label for="title" class="form-label">Title</label>
         <input type="text" placeholder="title" class="title form-control"><br><br>
@@ -57,12 +58,14 @@
         <button type="submit" id="submit-book" class="btn btn-primary add-book">Add</button>
       </form>
     </div>
-    <div class="contact_us" id="contact_us">
-      <div class="contact_content">
-        <h1>Contact Us</h1>
-        <div>Email</div>
-        <div>Phone</div>
-        <div>Facebook</div>
+    <div class="contact_contain">
+      <div class="contact_us" id="contact_us">
+        <div class="contact_content">
+          <h1>Contact Us</h1>
+          <div>Email</div>
+          <div>Phone</div>
+          <div>Facebook</div>
+        </div>
       </div>
     </div>
   </div>
@@ -70,9 +73,6 @@
     <div class="copyright">copyright</div>
   </footer>
   <script src="script.js"></script>
-  <script src="date.js"></script>
-  <script src="luxon.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script> -->
 </body>
 
 </html>

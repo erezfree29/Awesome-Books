@@ -1,4 +1,5 @@
-ul {
+ul,
+.logo {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -24,6 +25,12 @@ li a:hover:not(.active) {
 
 .active {
   background-color: #02adcb;
+}
+
+.logo {
+  color: #fff;
+  float: left;
+  font-size: 28px;
 }
 
 .display {
@@ -67,6 +74,8 @@ li a:hover:not(.active) {
   width: 60%;
   margin: 0 auto;
   margin-bottom: 2%;
+  display: none;
+
 }
 
 .table-container {
@@ -100,9 +109,20 @@ footer {
 }
 
 .date {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
   margin-top: 4.5%;
   margin-right: 8%;
   color: red;
   font-weight: 700;
   float: right;
+}
+
+.add_head {
+  display: none;
+}
+
+.contact_contain {
+  display: flex;
+  justify-content: center;
 }
