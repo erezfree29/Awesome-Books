@@ -31,6 +31,7 @@ class Library {
       }
 
       localStorage.setItem('savedArray', JSON.stringify(library.books));
+      window.location.reload();
     };
   }
 
