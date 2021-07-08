@@ -16,12 +16,15 @@
 <body>
   <nav>
     <ul>
-    <li><a href="#"  onclick="displayContact();">Contact</a></li>
-    <li><a href="#"  onclick="displayForm();">Add Book</a></li>
-    <li><a class="active" href="#" onclick="displayBooks();">List</a></li>
-    </nav>
+      <li><a href="#" onclick="displayContact();">Contact</a></li>
+      <li><a href="#" onclick="displayForm();">Add Book</a></li>
+      <li><a class="active" href="#" onclick="displayBooks();">List</a></li>
+  </nav>
   </div>
-  <div class="date" id ="digital-clock"> July 7, 2021</div>
+  <div class="date">
+    <div id="digital-clock"></div>
+
+  </div>
   <div class="container" id="list">
 
     <div class="table-container">
@@ -44,7 +47,7 @@
       <br>
       <h1 class="add_head">A new book</h1>
     </div>
-    <div class="my-form id="add_book">
+    <div class="my-form id=" add_book">
       <form id="book-form">
         <label for="title" class="form-label">Title</label>
         <input type="text" placeholder="title" class="title form-control"><br><br>

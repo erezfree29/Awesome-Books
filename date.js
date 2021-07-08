@@ -29,11 +29,7 @@ function getDateTime() {
           second = '0' + second;
      }
      
-     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
-     month = parseFloat(month);
-     month = monthNames[month - 1];
-     // let dateTime =  year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
-     let dateTime = `${month}`;
+     let dateTime =  year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
      return dateTime;
 }
 
