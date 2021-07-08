@@ -38,26 +38,28 @@ class Library {
     if (localStorage.getItem('savedArray') != null) {
       library.books = JSON.parse(localStorage.getItem('savedArray'));
     }
-    const contain = document.querySelector('.books');
+    const contain = document.querySelector('tbody');
     for (let i = 0; i < library.books.length; i += 1) {
+      const row = document.createElement('tr');
+      const th = document.createElement('th');
+      th.setAttribute('scope', 'row');
+      row.appendChild(th);
+      const htd = document.createElement('td');
+      const dtd = document.createElement('td');
       const btitle = document.createElement('h5');
       btitle.className = 'bookname';
-      btitle.id = library.books[i].title;
-      btitle.textContent = library.books[i].title;
-      const bauthor = document.createElement('p');
-      bauthor.className = 'bookauthor';
-      bauthor.textContent = library.books[i].author;
-      btitle.appendChild(bauthor);
+      btitle.textContent = `${library.books[i].title} by ${library.books[i].author}`;
+      htd.appendChild(btitle);
       const removeButton = document.createElement('button');
       removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
-      removeButton.className = 'btn btn-danger';
+      removeButton.className = 'remove btn btn-danger';
       removeButton.id = `remove${library.books[i].title}`;
       removeButton.textContent = 'remove';
-      const horizontal = document.createElement('hr');
-      horizontal.className = 'hr';
-      contain.appendChild(btitle);
-      contain.appendChild(removeButton);
-      contain.appendChild(horizontal);
+      dtd.appendChild(removeButton);
+      row.appendChild(htd);
+      row.appendChild(dtd);
+      row.id = library.books[i].title;
+      contain.appendChild(row);
     }
   }
 
@@ -67,10 +69,8 @@ class Library {
       if (library.books[i].title === title) {
         library.books.splice(i, 1);
         localStorage.setItem('savedArray', JSON.stringify(library.books));
-        const deleteBook = document.querySelector(`#${CSS.escape(title)}`);
-        const deleteBookButton = document.querySelector(`#remove${CSS.escape(title)}`);
-        deleteBook.parentNode.removeChild(deleteBook);
-        deleteBookButton.parentNode.removeChild(deleteBookButton);
+        const deleteRow = document.querySelector(`#${CSS.escape(title)}`);
+        deleteRow.parentNode.removeChild(deleteRow);
       }
     }
   }

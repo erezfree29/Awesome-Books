@@ -7,34 +7,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awesome Books</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
   <div>
-    <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#news">Programming</a>
-      <a href="#contact">Space Sciences</a>
-      <a href="#about">About</a>
-    </div>
   </div>
-
   <div class="container">
-    <div class="display">
-      <h1>All Awesome Books</h1>
+
+    <div class="table-container">
+      <div class="display">
+        <h1>All awesome books</h1>
+      </div>
+      <table class="table table-striped books">
+        <thead>
+          <tr>
+
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
-    <div class="books">
-    </div>
+
     <br>
-    <form id="book-form">
-      <label for="title" class="form-label">Title</label>
-      <input type="text" placeholder="title" class="title form-control"><br><br>
-      <label for="author" class="form-label">Author</label>
-      <input type="text" placeholder="author" class="author form-control"><br><br>
-      <button type="submit" id="submit-book" class="btn btn-primary">Add</button>
-    </form>
+    <div class="display">
+      <br>
+      <h1>A new book</h1>
+    </div>
+    <div class="my-form">
+      <form id="book-form">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" placeholder="title" class="title form-control"><br><br>
+        <label for="author" class="form-label">Author</label>
+        <input type="text" placeholder="author" class="author form-control"><br><br>
+        <button type="submit" id="submit-book" class="btn btn-primary add-book">Add</button>
+      </form>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
