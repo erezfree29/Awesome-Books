@@ -79,3 +79,15 @@ nav {
   top: 0;
   width: 100vw;
 }
+
+footer {
+  background-color: gray;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+.copyright {
+  margin-left: 2%;
+  color: white;
+}
