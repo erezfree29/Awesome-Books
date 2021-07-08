@@ -106,7 +106,7 @@ class Library {
     }
   }
 
-  timeItUp() {
+  myTime() {
     const timer = document.getElementById('clock');
     const datertimer = luxon.DateTime.now();
     timer.innerText = datertimer.toFormat('MMMM dd yyyy, hh:mm:ss a');
@@ -114,7 +114,7 @@ class Library {
 
   startTimer() {
     setInterval(() => {
-      this.timeItUp();
+      this.myTime();
     }, 1000);
   }
 };
