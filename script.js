@@ -103,12 +103,22 @@ class Library {
         deleteRow.parentNode.removeChild(deleteRow);
       }
     }
+
+    function timeItUp() {
+      const timer = document.getElementById('clock');
+      const datertimer = luxon.DateTime.now();
+      timer.innerText = datertimer.toLocaleString(luxon.DateTime.DATETIME_MED);
+    }
+    setInterval(() => {
+      timeItUp();
+    }, 1000);
   }
 }
 
 let library = new Library([]);
 library.addBook();
 library.showBooks();
+library.timeItUp();
 
 function displayForm() {
   const form = document.querySelector('.my-form');
