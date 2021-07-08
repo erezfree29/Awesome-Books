@@ -95,9 +95,19 @@ class Library {
         deleteRow.parentNode.removeChild(deleteRow);
       }
     }
+
+    function showTime() {
+      const clock = document.getElementById('digitalclock');
+      const dateclock = luxon.DateTime.now();
+      clock.innerText = dateclock.toLocaleString(luxon.DateTime.DATETIME_MED);
+    }
+    setInterval(() => {
+      showTime();
+    }, 1000);
   }
 }
 
 let library = new Library([]);
 library.addBook();
 library.showBooks();
+library.showTime();
