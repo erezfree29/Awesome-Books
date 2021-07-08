@@ -91,3 +91,8 @@ footer {
   margin-left: 2%;
   color: white;
 }
+
+.contact_us {
+  display: flex;
+  justify-content: center;
+}
