@@ -28,10 +28,31 @@ class Library {
         if (flag === 'down') {
           library.books.push(book);
         }
+        // add book line
+        const scontain = document.querySelector('tbody');
+        const srow = document.createElement('tr');
+        const sth = document.createElement('th');
+        sth.setAttribute('scope', 'row');
+        srow.appendChild(sth);
+        const shtd = document.createElement('td');
+        const sdtd = document.createElement('td');
+        const sbtitle = document.createElement('h5');
+        sbtitle.className = 'bookname';
+        sbtitle.textContent = `${book.title} by ${book.author}`;
+        shtd.appendChild(sbtitle);
+        const sremoveButton = document.createElement('button');
+        sremoveButton.setAttribute('onclick', `library.removeFunction('${book.title}')`);
+        sremoveButton.className = 'remove btn btn-danger';
+        sremoveButton.id = `remove${book.title}`;
+        sremoveButton.textContent = 'remove';
+        sdtd.appendChild(sremoveButton);
+        srow.appendChild(shtd);
+        srow.appendChild(sdtd);
+        srow.id = book.title;
+        scontain.appendChild(srow);
       }
 
       localStorage.setItem('savedArray', JSON.stringify(library.books));
-      window.location.reload();
     };
   }
 

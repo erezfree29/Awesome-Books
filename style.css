@@ -66,6 +66,7 @@ li a:hover:not(.active) {
 .my-form {
   width: 60%;
   margin: 0 auto;
+  margin-bottom: 2%;
 }
 
 .table-container {
@@ -95,4 +96,5 @@ footer {
 .contact_us {
   display: flex;
   justify-content: center;
+  margin-bottom: 3%;
 }
