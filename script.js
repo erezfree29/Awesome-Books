@@ -110,4 +110,3 @@ class Library {
 let library = new Library([]);
 library.addBook();
 library.showBooks();
-library.showTime();
