@@ -105,12 +105,13 @@ class Library {
     }
   }
 
-      get myTime() {
+    get myTime() {
     const timer = document.getElementById('clock');
     // eslint-disable-next-line no-undef
     const datertimer = luxon.DateTime.now();
     timer.innerText = datertimer.toFormat('MMMM dd yyyy, hh:mm:ss a');
   }
+
   startTimer() {
     setInterval(() => {
       this.myTime();
