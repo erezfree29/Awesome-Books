@@ -101,3 +101,37 @@ class Library {
 let library = new Library([]);
 library.addBook();
 library.showBooks();
+
+function displayForm() {
+  const form = document.querySelector('.my-form');
+  const addHead = document.querySelector('.add_head');
+  const table = document.querySelector('.table-container');
+  const contact = document.querySelector('.contact_us');
+  form.style.display = 'block';
+  addHead.style.display = 'block';
+  table.style.display = 'none';
+  contact.style.display = 'none';
+}
+
+function displayBooks() {
+  const form = document.querySelector('.my-form');
+  const addHead = document.querySelector('.add_head');
+  const table = document.querySelector('.table-container');
+  const contact = document.querySelector('.contact_us');
+  form.style.display = 'none';
+  addHead.style.display = 'none';
+  table.style.display = 'block';
+  contact.style.display = 'none';
+}
+
+function displayContact() {
+  const form = document.querySelector('.my-form');
+  const addHead = document.querySelector('.add_head');
+  const table = document.querySelector('.table-container');
+  const contact = document.querySelector('.contact_us');
+  form.style.display = 'none';
+  addHead.style.display = 'none';
+  table.style.display = 'none';
+  contact.style.display = 'block';
+}
+

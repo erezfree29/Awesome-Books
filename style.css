@@ -67,6 +67,8 @@ li a:hover:not(.active) {
   width: 60%;
   margin: 0 auto;
   margin-bottom: 2%;
+  display: none;
+
 }
 
 .table-container {
@@ -97,6 +99,7 @@ footer {
   display: flex;
   justify-content: center;
   margin-bottom: 3%;
+  display: none;
 }
 
 .date {
@@ -105,4 +108,13 @@ footer {
   color: red;
   font-weight: 700;
   float: right;
+}
+
+.add_head {
+  display: none;
+}
+
+.contact_contain {
+  display: flex;
+  justify-content: center;
 }
