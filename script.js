@@ -108,6 +108,7 @@ class Library {
 
   myTime() {
     const timer = document.getElementById('clock');
+    // eslint-disable-next-line no-undef
     const datertimer = luxon.DateTime.now();
     timer.innerText = datertimer.toFormat('MMMM dd yyyy, hh:mm:ss a');
   }
@@ -117,13 +118,14 @@ class Library {
       this.myTime();
     }, 1000);
   }
-};
+}
 
 let library = new Library([]);
 library.addBook();
 library.showBooks();
 library.startTimer();
 
+// eslint-disable-next-line no-unused-vars
 function displayForm() {
   const form = document.querySelector('.my-form');
   const addHead = document.querySelector('.add_head');
@@ -135,6 +137,7 @@ function displayForm() {
   contact.style.display = 'none';
 }
 
+// eslint-disable-next-line no-unused-vars
 function displayBooks() {
   const form = document.querySelector('.my-form');
   const addHead = document.querySelector('.add_head');
@@ -146,6 +149,7 @@ function displayBooks() {
   contact.style.display = 'none';
 }
 
+// eslint-disable-next-line no-unused-vars
 function displayContact() {
   const form = document.querySelector('.my-form');
   const addHead = document.querySelector('.add_head');
