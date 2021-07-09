@@ -105,7 +105,7 @@ class Library {
     }
   }
 
-    get myTime() {
+  myTime() {
     const timer = document.getElementById('clock');
     // eslint-disable-next-line no-undef
     const datertimer = luxon.DateTime.now();
