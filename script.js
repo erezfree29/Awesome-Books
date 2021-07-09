@@ -50,6 +50,14 @@ class Library {
         srow.appendChild(sdtd);
         srow.id = book.title;
         scontain.appendChild(srow);
+        const sform = document.querySelector('.my-form');
+        const saddHead = document.querySelector('.add_head');
+        const stable = document.querySelector('.table-container');
+        const scontact = document.querySelector('.contact_us');
+        sform.style.display = 'none';
+        saddHead.style.display = 'none';
+        stable.style.display = 'block';
+        scontact.style.display = 'none';
       }
 
       localStorage.setItem('savedArray', JSON.stringify(library.books));
@@ -134,4 +142,3 @@ function displayContact() {
   table.style.display = 'none';
   contact.style.display = 'block';
 }
-

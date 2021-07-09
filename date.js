@@ -29,8 +29,8 @@ function getDateTime() {
           second = '0' + second;
      }
      month = month.toLocaleString('default', { month: 'long' });
-     let dateTime =  month;
-     // year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+     let dateTime =  year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+     
      return dateTime;
 }
 
