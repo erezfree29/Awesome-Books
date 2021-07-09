@@ -1,32 +1,43 @@
-.topnav {
+ul,
+.logo {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   background-color: #333;
 }
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+li a:hover:not(.active) {
+  background-color: #111;
 }
 
-.topnav a.active {
-  background-color: #1476de;
-  color: white;
+.active {
+  background-color: #02adcb;
+}
+
+.logo {
+  color: #fff;
+  float: left;
+  font-size: 28px;
 }
 
 .display {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 28px;
   color: #311fde;
-  padding: 8px;
+  padding: 54px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +51,6 @@
   background-color: #de1b14;
   color: #fff;
   border-radius: 8px;
-  margin-left: 55%;
 }
 
 .hr {
@@ -62,10 +72,55 @@
 .my-form {
   width: 60%;
   margin: 0 auto;
+  margin-bottom: 2%;
+  display: none;
 }
 
 .table-container {
   margin: 0 auto;
   width: 80%;
   align-items: center;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+footer {
+  background-color: gray;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+.copyright {
+  margin-left: 2%;
+  color: white;
+}
+
+.contact_us {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+
+.date {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  margin-top: 4.5%;
+  margin-right: 8%;
+  color: red;
+  font-weight: 700;
+  float: right;
+}
+
+.add_head {
+  display: none;
+}
+
+.contact_contain {
+  display: flex;
+  justify-content: center;
 }

@@ -11,43 +11,70 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
 </head>
 
 <body>
-  <div>
-  </div>
-  <div class="container">
+  <header>
+    <nav>
+      <ul>
+        <li class="logo">Awesome Books</li>
+        <li><a href="#" onclick="displayContact();">Contact</a></li>
+        <li><a href="#" onclick="displayForm();">Add Book</a></li>
+        <li><a class="active" href="#" onclick="displayBooks();">List</a></li>
+    </nav>
+    </div>
+</header>
+  <main>
+    <div class="date">
+      <div id="clock"> </div>
+    </div>
+    <div class="container" id="list">
 
-    <div class="table-container">
-      <div class="display">
-        <h1>All awesome books</h1>
+      <div class="table-container">
+        <div class="display">
+          <h1>All awesome books</h1>
+        </div>
+        <table class="table table-striped books">
+          <thead>
+            <tr>
+
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </div>
-      <table class="table table-striped books">
-        <thead>
-          <tr>
 
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-
-    <br>
-    <div class="display">
       <br>
-      <h1>A new book</h1>
+      <div class="display">
+        <br>
+        <h1 class="add_head">A new book</h1>
+      </div>
+      <div class="my-form id=" add_book">
+        <form id="book-form">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" placeholder="title" class="title form-control"><br><br>
+          <label for="author" class="form-label">Author</label>
+          <input type="text" placeholder="author" class="author form-control"><br><br>
+          <button type="submit" id="submit-book" class="btn btn-primary add-book">Add</button>
+        </form>
+      </div>
+      <div class="contact_contain">
+        <div class="contact_us" id="contact_us">
+          <div class="contact_content">
+            <h1>Contact Us</h1>
+            <div>Email</div>
+            <div>Phone</div>
+            <div>Facebook</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="my-form">
-      <form id="book-form">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" placeholder="title" class="title form-control"><br><br>
-        <label for="author" class="form-label">Author</label>
-        <input type="text" placeholder="author" class="author form-control"><br><br>
-        <button type="submit" id="submit-book" class="btn btn-primary add-book">Add</button>
-      </form>
-    </div>
-  </div>
+  </main>
+  <footer>
+    <div class="copyright">copyright</div>
+  </footer>
   <script src="script.js"></script>
 </body>
 
