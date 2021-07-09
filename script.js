@@ -1,6 +1,5 @@
-/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
-// var DateTime = luxon.DateTime;
 class Library {
   constructor(books) {
     this.books = books;
@@ -10,7 +9,7 @@ class Library {
     const addBookButton = document.querySelector('button');
     addBookButton.onclick = function addBookButton() {
       if (localStorage.getItem('savedArray') != null) {
-        library.books = JSON.parse(localStorage.getItem('savedArray'));
+        this.books = JSON.parse(localStorage.getItem('savedArray'));
       }
       if (document.querySelector('.title').value !== '' && document.querySelector('.author').value !== '') {
         const btitle = document.querySelector('.title').value;
@@ -20,14 +19,14 @@ class Library {
           author: bauthor,
         };
         let flag = 'down';
-        for (let i = 0; i < library.books.length; i += 1) {
-          if (library.books[i].title === btitle) {
+        for (let i = 0; i < this.books.length; i += 1) {
+          if (this.books[i].title === btitle) {
             flag = 'up';
             break;
           }
         }
         if (flag === 'down') {
-          library.books.push(book);
+          this.books.push(book);
         }
         // add book line
         const scontain = document.querySelector('tbody');
@@ -61,16 +60,16 @@ class Library {
         scontact.style.display = 'none';
       }
 
-      localStorage.setItem('savedArray', JSON.stringify(library.books));
+      localStorage.setItem('savedArray', JSON.stringify(this.books));
     };
   }
 
   showBooks() {
     if (localStorage.getItem('savedArray') != null) {
-      library.books = JSON.parse(localStorage.getItem('savedArray'));
+      this.books = JSON.parse(localStorage.getItem('savedArray'));
     }
     const contain = document.querySelector('tbody');
-    for (let i = 0; i < library.books.length; i += 1) {
+    for (let i = 0; i < this.books.length; i += 1) {
       const row = document.createElement('tr');
       const th = document.createElement('th');
       th.setAttribute('scope', 'row');
@@ -79,34 +78,34 @@ class Library {
       const dtd = document.createElement('td');
       const btitle = document.createElement('h5');
       btitle.className = 'bookname';
-      btitle.textContent = `${library.books[i].title} by ${library.books[i].author}`;
+      btitle.textContent = `${this.books[i].title} by ${this.books[i].author}`;
       htd.appendChild(btitle);
       const removeButton = document.createElement('button');
-      removeButton.setAttribute('onclick', `library.removeFunction('${library.books[i].title}')`);
+      removeButton.setAttribute('onclick', `library.removeFunction('${this.books[i].title}')`);
       removeButton.className = 'remove btn btn-danger';
-      removeButton.id = `remove${library.books[i].title}`;
+      removeButton.id = `remove${this.books[i].title}`;
       removeButton.textContent = 'remove';
       dtd.appendChild(removeButton);
       row.appendChild(htd);
       row.appendChild(dtd);
-      row.id = library.books[i].title;
+      row.id = this.books[i].title;
       contain.appendChild(row);
     }
   }
 
   // eslint-disable-next-line no-unused-vars
   removeFunction(title) {
-    for (let i = 0; i < library.books.length; i += 1) {
-      if (library.books[i].title === title) {
-        library.books.splice(i, 1);
-        localStorage.setItem('savedArray', JSON.stringify(library.books));
+    for (let i = 0; i < this.books.length; i += 1) {
+      if (this.books[i].title === title) {
+        this.books.splice(i, 1);
+        localStorage.setItem('savedArray', JSON.stringify(this.books));
         const deleteRow = document.querySelector(`#${CSS.escape(title)}`);
         deleteRow.parentNode.removeChild(deleteRow);
       }
     }
   }
 
-  myTime() {
+  static myTime() {
     const timer = document.getElementById('clock');
     // eslint-disable-next-line no-undef
     const datertimer = luxon.DateTime.now();
@@ -120,12 +119,13 @@ class Library {
   }
 }
 
-let library = new Library([]);
+const library = new Library([]);
 library.addBook();
 library.showBooks();
 library.startTimer();
 
-// eslint-disable-next-line no-unused-vars
+// functions bellow are being activated by user onclick so linters of un used vars are not needed
+// and being disactivated withiut this deactivation the linters test would not pass
 function displayForm() {
   const form = document.querySelector('.my-form');
   const addHead = document.querySelector('.add_head');
@@ -137,7 +137,6 @@ function displayForm() {
   contact.style.display = 'none';
 }
 
-// eslint-disable-next-line no-unused-vars
 function displayBooks() {
   const form = document.querySelector('.my-form');
   const addHead = document.querySelector('.add_head');
@@ -149,7 +148,6 @@ function displayBooks() {
   contact.style.display = 'none';
 }
 
-// eslint-disable-next-line no-unused-vars
 function displayContact() {
   const form = document.querySelector('.my-form');
   const addHead = document.querySelector('.add_head');
